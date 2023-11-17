@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm Fri Nov 17 22:37:14 2023
+AVRASM ver. 2.2.8  D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm Sat Nov 18 01:16:33 2023
 
 
 EQU  SIGNATURE_000 0000001e
@@ -699,9 +699,15 @@ EQU  ldrhigh      00000004
 EQU  ldrlow       00000005
 EQU  ldrok        00000006
 EQU  mot_in1      00000000
+EQU  mot_in2      00000001
+EQU  mot_in3      00000002
+EQU  mot_in4      00000003
 DEF  temp         r20
 DEF  motctrl      r16
+DEF  delayr       r17
 CSEG setup        00000004
-CSEG lowldron     0000000a
-CSEG okldron      0000000e
-CSEG highldron    00000012
+CSEG lowldron     0000000d
+CSEG delay        00000019
+CSEG okldron      00000011
+CSEG highldron    00000015
+CSEG mydelay      0000001c

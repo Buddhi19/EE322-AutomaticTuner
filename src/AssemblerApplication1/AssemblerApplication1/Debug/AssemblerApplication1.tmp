@@ -23,9 +23,11 @@
   <FILE>AssemblerApplication1.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <setup><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>27</LINE></setup>
-  <lowldron><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>35</LINE></lowldron>
-  <okldron><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>41</LINE></okldron>
-  <highldron><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>47</LINE></highldron>
+  <setup><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>31</LINE></setup>
+  <lowldron><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>44</LINE></lowldron>
+  <delay><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>62</LINE></delay>
+  <okldron><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>50</LINE></okldron>
+  <highldron><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>56</LINE></highldron>
+  <mydelay><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>67</LINE></mydelay>
  </LABELS>
 </ASSEMBLER_INFO>
