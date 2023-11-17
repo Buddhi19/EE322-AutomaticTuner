@@ -8,36 +8,43 @@
 
 .include "m328pdef.inc"
 	
-	.def	ldrhigh = r17							; define higher frequency indicating ldr
-	.def	ldrlow  = r18							; define lower frequency indicating ldr
-	.def	ldrok   = r19							; define accepted frequecy indicating ldr
+	.equ	ldrhigh = 4								; define higher frequency indicating ldr pin 
+	.equ	ldrlow  = 5								; define lower frequency indicating ldr pin 
+	.equ	ldrok   = 6								; define accepted frequecy indicating ldr pin
+
+	.equ	mot_in1 = 0								; define motor driver input pin1
+	
 	.def	temp    = r20							; define temporary register
+	.def	motctrl	= r16							; define motctrl register to control motor driver
 
 	.cseg 
 	.org	0x00									; set instruction starting address to 0x00
-	ldi 	temp, (1<<PB0) | (1<<PB1) | (1<<PB2)	; set temp register such that it can manage all 3ldrs
+	ldi 	temp, (1<<PB4) | (1<<PB5) | (1<<PB6)	; set temp register such that it can manage all 3ldrs
+	ldi		motctrl, (1<<PB0) | (1<<PB1) | (1<<PB2) | (1<<PB3)
+	out		DDRB, motctrl
 	out		DDRB, temp
 	
 setup:
 	rcall	lowldron
+
 	rjmp	setup
 
 lowldron:
-	cbi		PORTB, 0
-	cbi		PORTB, 1
-	sbi		PORTB, 2
+	cbi		PORTB, ldrhigh
+	cbi		PORTB, ldrok
+	sbi		PORTB, ldrlow
 	ret
 
 okldron:
-	cbi		PORTB, 0
-	cbi		PORTB, 2
-	sbi		PORTB, 1
+	cbi		PORTB, ldrhigh
+	cbi		PORTB, ldrlow
+	sbi		PORTB, ldrok
 	ret
 
 highldron:
-	cbi		PORTB, 1
-	cbi		PORTB, 2
-	sbi		PORTB, 0
+	cbi		PORTB, ldrok
+	cbi		PORTB, ldrlow
+	sbi		PORTB, ldrhigh
 	ret
 
 	
