@@ -13,7 +13,7 @@ Project Automatic Tuner: Implementing an Automatic Tuner for the EE322 mini-proj
 | Full proteus set-up | |
 | Analog Voltage Reading | |
 | Noise Filtering | |
-| | |
+| Button Handling | |
 
 # DONE
 | Task|
