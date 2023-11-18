@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm Sat Nov 18 01:16:33 2023
+AVRASM ver. 2.2.8  D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm Sat Nov 18 15:38:23 2023
 
 
 EQU  SIGNATURE_000 0000001e
@@ -695,19 +695,20 @@ EQU  ACIaddr      0000002e
 EQU  TWIaddr      00000030
 EQU  SPMRaddr     00000032
 EQU  INT_VECTORS_SIZE 00000034
-EQU  ldrhigh      00000004
-EQU  ldrlow       00000005
-EQU  ldrok        00000006
+EQU  ldrhigh      00000000
+EQU  ldrlow       00000001
+EQU  ldrok        00000002
+EQU  ledP         00000005
 EQU  mot_in1      00000000
 EQU  mot_in2      00000001
 EQU  mot_in3      00000002
 EQU  mot_in4      00000003
-DEF  temp         r20
+DEF  ledctrl      r20
 DEF  motctrl      r16
 DEF  delayr       r17
 CSEG setup        00000004
-CSEG lowldron     0000000d
-CSEG delay        00000019
-CSEG okldron      00000011
-CSEG highldron    00000015
-CSEG mydelay      0000001c
+CSEG delay        00000017
+CSEG lowldron     0000000b
+CSEG okldron      0000000f
+CSEG highldron    00000013
+CSEG mydelay      0000001a

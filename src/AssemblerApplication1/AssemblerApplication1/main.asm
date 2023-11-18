@@ -8,59 +8,60 @@
 
 .include "m328pdef.inc"
 	
-	.equ	ldrhigh = 4								; define higher frequency indicating ldr pin 
-	.equ	ldrlow  = 5								; define lower frequency indicating ldr pin 
-	.equ	ldrok   = 6								; define accepted frequecy indicating ldr pin
+	.equ	ldrhigh = 0								; define higher frequency indicating ldr pin 
+	.equ	ldrlow  = 1								; define lower frequency indicating ldr pin 
+	.equ	ldrok   = 2								; define accepted frequecy indicating ldr pin
+	.equ	ledP	= PORTB							; define led PORT
 
 	.equ	mot_in1 = 0								; define motor driver input pin1
 	.equ	mot_in2 = 1								; define motor driver input pin2
 	.equ	mot_in3 = 2								; define motor driver input pin3
 	.equ    mot_in4 = 3								; define motor driver input pin4
 	
-	.def	temp    = r20							; define temporary register
+	.def	ledctrl = r20							; define temporary register
 	.def	motctrl	= r16							; define motctrl register to control motor driver
 	.def	delayr  = r17							; define delay counter register
 
 	.cseg 
 	.org	0x00									; set instruction starting address to 0x00
-	ldi 	temp, (1<<PB4) | (1<<PB5) | (1<<PB6)	; set temp register such that it can manage all 3ldrs
-	ldi		motctrl, (1<<PD0) | (1<<PD1) | (1<<PD2) | (1<<PD3)
-	out		DDRD, motctrl
-	out		DDRB, temp
+	ldi 	ledctrl, (1<<PD0) | (1<<PD1) | (1<<PD2)	; set temp register such that it can manage all 3ldrs
+
+	ldi		motctrl, (1<<PB0) | (1<<PB1) | (1<<PB2) | (1<<PB3)
+	out		DDRB, motctrl
+	out		DDRD, ledctrl
 	
 setup:
-	rcall	lowldron
-	ldi		motctrl, (1<<PD0)
-	out		PORTD, motctrl
+	ldi		motctrl, (1<<PB2)
+	out		PORTB, motctrl
 	rcall   delay
 
-	ldi		motctrl, (1<<PD0)
-	out		PORTD, motctrl
-	cbi		PORTD, 0
+	ldi		motctrl, (0<<PB2) 
+	out		PORTB, motctrl
 	rcall	delay
+
 	
 	rjmp	setup
 
 lowldron:
-	cbi		PORTB, ldrhigh
-	cbi		PORTB, ldrok
-	sbi		PORTB, ldrlow
+	cbi		ledP, ldrhigh
+	cbi		ledP, ldrok
+	sbi		ledP, ldrlow
 	ret
 
 okldron:
-	cbi		PORTB, ldrhigh
-	cbi		PORTB, ldrlow
-	sbi		PORTB, ldrok
+	cbi		ledP, ldrhigh
+	cbi		ledP, ldrlow
+	sbi		ledP, ldrok
 	ret
 
 highldron:
-	cbi		PORTB, ldrok
-	cbi		PORTB, ldrlow
-	sbi		PORTB, ldrhigh
+	cbi		ledP, ldrok
+	cbi		ledP, ldrlow
+	sbi		ledP, ldrhigh
 	ret
 
 delay:
-	ldi		delayr, 0x08						; load delay register
+	ldi		delayr, 0xff						; load delay register
 	rcall	mydelay
 	ret
 
