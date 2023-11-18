@@ -20,3 +20,13 @@ Project Automatic Tuner: Implementing an Automatic Tuner for the EE322 mini-proj
 |---|
 | LED Indication |
 | Sample proteus set-up |
+
+# Proteus ICs Used
+
+| Item | IC number |
+| --- | --- |
+| Arduino | Atmega328p chip |
+| Motor driver | L293D |
+| Bipolar stepper motor | NEMA 17 |
+
+# UML Diagram
