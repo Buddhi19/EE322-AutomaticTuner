@@ -23,11 +23,15 @@
   <FILE>AssemblerApplication1.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <setup><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>33</LINE></setup>
-  <delay><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>63</LINE></delay>
-  <lowldron><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>45</LINE></lowldron>
-  <okldron><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>51</LINE></okldron>
-  <highldron><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>57</LINE></highldron>
-  <mydelay><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>68</LINE></mydelay>
+  <setup><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>29</LINE></setup>
+  <loop><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>35</LINE></loop>
+  <step_rotate_clockwise><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>80</LINE></step_rotate_clockwise>
+  <step_rotate_anticlockwise><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>70</LINE></step_rotate_anticlockwise>
+  <zero_movement><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>65</LINE></zero_movement>
+  <low_led_on><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>47</LINE></low_led_on>
+  <ok_led_on><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>53</LINE></ok_led_on>
+  <high_led_on><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>59</LINE></high_led_on>
+  <delay><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>91</LINE></delay>
+  <mydelay><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>96</LINE></mydelay>
  </LABELS>
 </ASSEMBLER_INFO>

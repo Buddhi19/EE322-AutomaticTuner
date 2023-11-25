@@ -8,9 +8,9 @@
 
 .include "m328pdef.inc"
 	
-	.equ	ldrhigh = 0								; define higher frequency indicating ldr pin 
-	.equ	ldrlow  = 1								; define lower frequency indicating ldr pin 
-	.equ	ldrok   = 2								; define accepted frequecy indicating ldr pin
+	.equ	ledhigh = 0								; define higher frequency indicating ldr pin 
+	.equ	ledlow  = 1								; define lower frequency indicating ldr pin 
+	.equ	ledok   = 2								; define accepted frequecy indicating ldr pin
 	.equ	ledP	= PORTB							; define led PORT
 
 	.equ	mot_in1 = 0								; define motor driver input pin1
@@ -18,47 +18,75 @@
 	.equ	mot_in3 = 2								; define motor driver input pin3
 	.equ    mot_in4 = 3								; define motor driver input pin4
 	
-	.def	ledctrl = r20							; define temporary register
-	.def	motctrl	= r16							; define motctrl register to control motor driver
+	.def	ctrl = r16								; define temporary register to controlling
 	.def	delayr  = r17							; define delay counter register
 
 	.cseg 
 	.org	0x00									; set instruction starting address to 0x00
-	ldi 	ledctrl, (1<<PD0) | (1<<PD1) | (1<<PD2)	; set temp register such that it can manage all 3ldrs
-
-	ldi		motctrl, (1<<PB0) | (1<<PB1) | (1<<PB2) | (1<<PB3)
-	out		DDRB, motctrl
-	out		DDRD, ledctrl
+		rjmp	setup
+	.org	0x02
 	
 setup:
-	ldi		motctrl, (1<<PB2)
-	out		PORTB, motctrl
-	rcall   delay
+	ldi 	ctrl, (1<<PD0) | (1<<PD1) | (1<<PD2)
+	out		DDRD, ctrl							; set output ports in PORTD
+	ldi		ctrl, (1<<PB0) | (1<<PB1) | (1<<PB2) | (1<<PB3)
+	out		DDRB, ctrl							; set output ports in PORTB
 
-	ldi		motctrl, (0<<PB2) 
-	out		PORTB, motctrl
+loop:
+	in		ctrl, PINB
+	ldi		r18, (1<<PB4) | (1<<PB5) | (1<<PB6)
+	and		ctrl, r18
+	sbrc	ctrl, 4
+	rjmp	step_rotate_clockwise
+	sbrc	ctrl, 5
+	rjmp	step_rotate_anticlockwise
+	rjmp	zero_movement
+	rjmp	loop
+
+
+low_led_on:
+	cbi		ledP, ledhigh
+	cbi		ledP, ledok
+	sbi		ledP, ledlow
+	ret
+
+ok_led_on:
+	cbi		ledP, ledhigh
+	cbi		ledP, ledlow
+	sbi		ledP, ledok
+	ret
+
+high_led_on:
+	cbi		ledP, ledok
+	cbi		ledP, ledlow
+	sbi		ledP, ledhigh
+	ret
+
+zero_movement:
+	ldi		ctrl, 0x00
+	out		PORTB, ctrl
+	rjmp	loop
+
+step_rotate_anticlockwise:
+	ldi		ctrl, 0x03
+	out		PORTB, ctrl
 	rcall	delay
 
-	
-	rjmp	setup
+	ldi		ctrl, 0xC
+	out		PORTB, ctrl
+	rcall	delay
+	rjmp	loop
 
-lowldron:
-	cbi		ledP, ldrhigh
-	cbi		ledP, ldrok
-	sbi		ledP, ldrlow
-	ret
+step_rotate_clockwise:
+	ldi		ctrl, 0x05
+	out		PORTB, ctrl
+	rcall	delay
 
-okldron:
-	cbi		ledP, ldrhigh
-	cbi		ledP, ldrlow
-	sbi		ledP, ldrok
-	ret
+	ldi		ctrl, 0xB
+	out		PORTB, ctrl
+	rcall	delay
+	rjmp	loop
 
-highldron:
-	cbi		ledP, ldrok
-	cbi		ledP, ldrlow
-	sbi		ledP, ldrhigh
-	ret
 
 delay:
 	ldi		delayr, 0xff						; load delay register
