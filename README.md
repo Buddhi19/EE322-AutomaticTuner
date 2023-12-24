@@ -4,7 +4,7 @@ Project Automatic Tuner: Implementing an Automatic Tuner for the EE322 mini-proj
 # In Progress
 | Athulya Ratnayake | Thimira Hirushan | Buddhi Wijenayake |
 |---|---|---|
-| | | Stepper controlling |
+| | | Audio Processing |
 
 # Planned
 | Tasks | Assignees|
@@ -20,6 +20,7 @@ Project Automatic Tuner: Implementing an Automatic Tuner for the EE322 mini-proj
 |---|
 | LED Indication |
 | Sample proteus set-up |
+| Motor Control |
 
 # Proteus ICs Used
 
