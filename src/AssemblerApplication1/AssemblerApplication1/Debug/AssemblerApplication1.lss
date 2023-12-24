@@ -1,12 +1,12 @@
 
-AVRASM ver. 2.2.8  D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm Sun Dec 24 12:34:12 2023
+AVRASM ver. 2.2.8  D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm Sun Dec 24 17:48:12 2023
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
 D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm(9): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328pdef.inc'
-D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm(119): Including file 'D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\delay.asm'
+D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm(125): Including file 'D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\delay.asm'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
 D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm(9): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328pdef.inc'
-D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm(119): Including file 'D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\delay.asm'
+D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm(125): Including file 'D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\delay.asm'
                                  
                                  ;
                                  
@@ -1057,13 +1057,13 @@ D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\ma
                                  	.cseg 
                                  	.org	0x00									; set instruction starting address to 0x00
 000000 c001                      		rjmp	setup
-                                 	.org	0x02
+                                 	.org	0x02									; interrupt call for zero crossing
                                  	
                                  setup:
 000002 e007                      	ldi 	ctrl, (1<<PD0) | (1<<PD1) | (1<<PD2)
-000003 b90a                      	out		DDRD, ctrl							; set output ports in PORTD
+000003 b90a                      	out		DDRD, ctrl								; set output ports in PORTD
 000004 e00f                      	ldi		ctrl, (1<<PB0) | (1<<PB1) | (1<<PB2) | (1<<PB3)
-000005 b904                      	out		DDRB, ctrl							; set output ports in PORTB
+000005 b904                      	out		DDRB, ctrl								; set output ports in PORTB
                                  
                                  loop:
 000006 b103                      	in		ctrl, PINB
@@ -1081,18 +1081,21 @@ D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\ma
                                  
                                  
                                  low_led_on:
-000010 9828                      	cbi		ledP, ledhigh
+                                 	; indicating frequency is low
+000010 9828                      	cbi		ledP, ledhigh		
 000011 982a                      	cbi		ledP, ledok
 000012 9a29                      	sbi		ledP, ledlow
 000013 9508                      	ret
                                  
                                  ok_led_on:
+                                 	; indicating frequnecy is okay
 000014 9828                      	cbi		ledP, ledhigh
 000015 9829                      	cbi		ledP, ledlow
 000016 9a2a                      	sbi		ledP, ledok
 000017 9508                      	ret
                                  
                                  high_led_on:
+                                 	; indicating frequency is high
 000018 982a                      	cbi		ledP, ledok
 000019 9829                      	cbi		ledP, ledlow
 00001a 9a28                      	sbi		ledP, ledhigh
@@ -1100,6 +1103,7 @@ D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\ma
                                  
                                  
                                  step_rotate_anticlockwise:
+                                 	; sequence for the motor driver to rotate the motor anticlockwise
 00001c e001                      	ldi		ctrl, 0b00000001
 00001d b905                      	out		PORTB, ctrl
 00001e d01e                      	rcall	pause
@@ -1121,6 +1125,7 @@ D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\ma
                                  
                                  
                                  step_rotate_clockwise:
+                                 	; sequence for the motor driver to rotate the motor clockwise
 000029 e008                      	ldi		ctrl, 0b00001000
 00002a b905                      	out		PORTB, ctrl
 00002b d011                      	rcall	pause
@@ -1140,6 +1145,7 @@ D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\ma
 000035 cfd0                      	rjmp	loop
                                  
                                  setzero_pos:
+                                 	; zero position this is not working
 000036 e004                      	ldi		ctrl,0b00000100
 000037 b905                      	out		PORTB, ctrl
 000038 d004                      	rcall	pause

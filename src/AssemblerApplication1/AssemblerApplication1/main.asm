@@ -24,13 +24,13 @@
 	.cseg 
 	.org	0x00									; set instruction starting address to 0x00
 		rjmp	setup
-	.org	0x02
+	.org	0x02									; interrupt call for zero crossing
 	
 setup:
 	ldi 	ctrl, (1<<PD0) | (1<<PD1) | (1<<PD2)
-	out		DDRD, ctrl							; set output ports in PORTD
+	out		DDRD, ctrl								; set output ports in PORTD
 	ldi		ctrl, (1<<PB0) | (1<<PB1) | (1<<PB2) | (1<<PB3)
-	out		DDRB, ctrl							; set output ports in PORTB
+	out		DDRB, ctrl								; set output ports in PORTB
 
 loop:
 	in		ctrl, PINB
@@ -48,18 +48,21 @@ loop:
 
 
 low_led_on:
-	cbi		ledP, ledhigh
+	; indicating frequency is low
+	cbi		ledP, ledhigh		
 	cbi		ledP, ledok
 	sbi		ledP, ledlow
 	ret
 
 ok_led_on:
+	; indicating frequnecy is okay
 	cbi		ledP, ledhigh
 	cbi		ledP, ledlow
 	sbi		ledP, ledok
 	ret
 
 high_led_on:
+	; indicating frequency is high
 	cbi		ledP, ledok
 	cbi		ledP, ledlow
 	sbi		ledP, ledhigh
@@ -67,6 +70,7 @@ high_led_on:
 
 
 step_rotate_anticlockwise:
+	; sequence for the motor driver to rotate the motor anticlockwise
 	ldi		ctrl, 0b00000001
 	out		PORTB, ctrl
 	rcall	pause
@@ -88,6 +92,7 @@ step_rotate_anticlockwise:
 
 
 step_rotate_clockwise:
+	; sequence for the motor driver to rotate the motor clockwise
 	ldi		ctrl, 0b00001000
 	out		PORTB, ctrl
 	rcall	pause
@@ -107,6 +112,7 @@ step_rotate_clockwise:
 	rjmp	loop
 
 setzero_pos:
+	; zero position this is not working
 	ldi		ctrl,0b00000100
 	out		PORTB, ctrl
 	rcall	pause
