@@ -40,7 +40,10 @@ loop:
 	rjmp	step_rotate_clockwise
 	sbrc	ctrl, 5
 	rjmp	step_rotate_anticlockwise
-	rjmp	zero_movement
+	
+	sbrc	ctrl, 6
+	rjmp	setzero_pos
+
 	rjmp	loop
 
 
@@ -62,39 +65,55 @@ high_led_on:
 	sbi		ledP, ledhigh
 	ret
 
-zero_movement:
-	ldi		ctrl, 0x00
-	out		PORTB, ctrl
-	rjmp	loop
 
 step_rotate_anticlockwise:
-	ldi		ctrl, 0x03
+	ldi		ctrl, 0b00000001
 	out		PORTB, ctrl
-	rcall	delay
+	rcall	pause
 
-	ldi		ctrl, 0xC
+	ldi		ctrl, 0b00000010
 	out		PORTB, ctrl
-	rcall	delay
+	rcall	pause
+
+	ldi		ctrl, 0b00000100
+	out		PORTB, ctrl
+	rcall	pause
+
+	ldi		ctrl, 0b00001000
+	out		PORTB, ctrl
+	rcall	pause
+
 	rjmp	loop
+
+
 
 step_rotate_clockwise:
-	ldi		ctrl, 0x05
+	ldi		ctrl, 0b00001000
 	out		PORTB, ctrl
-	rcall	delay
+	rcall	pause
 
-	ldi		ctrl, 0xB
+	ldi		ctrl, 0b00000100
 	out		PORTB, ctrl
-	rcall	delay
+	rcall	pause
+
+	ldi		ctrl, 0b00000010
+	out		PORTB, ctrl
+	rcall	pause
+
+	ldi		ctrl, 0b00000001
+	out		PORTB, ctrl
+	rcall	pause
+
 	rjmp	loop
 
+setzero_pos:
+	ldi		ctrl,0b00000100
+	out		PORTB, ctrl
+	rcall	pause
 
-delay:
-	ldi		delayr, 0xff						; load delay register
-	rcall	mydelay
-	ret
+	ldi		ctrl, 0b00000000
+	out		PORTB, ctrl
+	rcall	pause
+	rjmp	loop
 
-mydelay:
-	dec		delayr
-	brne	mydelay
-	ret
-	
+.include"delay.asm"

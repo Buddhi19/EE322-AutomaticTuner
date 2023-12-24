@@ -1,10 +1,12 @@
 
-AVRASM ver. 2.2.8  D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm Sat Nov 25 20:17:58 2023
+AVRASM ver. 2.2.8  D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm Sun Dec 24 12:34:12 2023
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
 D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm(9): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328pdef.inc'
+D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm(119): Including file 'D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\delay.asm'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
 D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm(9): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328pdef.inc'
+D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm(119): Including file 'D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\delay.asm'
                                  
                                  ;
                                  
@@ -1068,66 +1070,111 @@ D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\ma
 000007 e720                      	ldi		r18, (1<<PB4) | (1<<PB5) | (1<<PB6)
 000008 2302                      	and		ctrl, r18
 000009 fd04                      	sbrc	ctrl, 4
-00000a c01a                      	rjmp	step_rotate_clockwise
+00000a c01e                      	rjmp	step_rotate_clockwise
 00000b fd05                      	sbrc	ctrl, 5
-00000c c011                      	rjmp	step_rotate_anticlockwise
-00000d c00d                      	rjmp	zero_movement
-00000e cff7                      	rjmp	loop
+00000c c00f                      	rjmp	step_rotate_anticlockwise
+                                 	
+00000d fd06                      	sbrc	ctrl, 6
+00000e c027                      	rjmp	setzero_pos
+                                 
+00000f cff6                      	rjmp	loop
                                  
                                  
                                  low_led_on:
-00000f 9828                      	cbi		ledP, ledhigh
-000010 982a                      	cbi		ledP, ledok
-000011 9a29                      	sbi		ledP, ledlow
-000012 9508                      	ret
+000010 9828                      	cbi		ledP, ledhigh
+000011 982a                      	cbi		ledP, ledok
+000012 9a29                      	sbi		ledP, ledlow
+000013 9508                      	ret
                                  
                                  ok_led_on:
-000013 9828                      	cbi		ledP, ledhigh
-000014 9829                      	cbi		ledP, ledlow
-000015 9a2a                      	sbi		ledP, ledok
-000016 9508                      	ret
+000014 9828                      	cbi		ledP, ledhigh
+000015 9829                      	cbi		ledP, ledlow
+000016 9a2a                      	sbi		ledP, ledok
+000017 9508                      	ret
                                  
                                  high_led_on:
-000017 982a                      	cbi		ledP, ledok
-000018 9829                      	cbi		ledP, ledlow
-000019 9a28                      	sbi		ledP, ledhigh
-00001a 9508                      	ret
+000018 982a                      	cbi		ledP, ledok
+000019 9829                      	cbi		ledP, ledlow
+00001a 9a28                      	sbi		ledP, ledhigh
+00001b 9508                      	ret
                                  
-                                 zero_movement:
-00001b e000                      	ldi		ctrl, 0x00
-00001c b905                      	out		PORTB, ctrl
-00001d cfe8                      	rjmp	loop
                                  
                                  step_rotate_anticlockwise:
-00001e e003                      	ldi		ctrl, 0x03
-00001f b905                      	out		PORTB, ctrl
-000020 d00b                      	rcall	delay
+00001c e001                      	ldi		ctrl, 0b00000001
+00001d b905                      	out		PORTB, ctrl
+00001e d01e                      	rcall	pause
                                  
-000021 e00c                      	ldi		ctrl, 0xC
-000022 b905                      	out		PORTB, ctrl
-000023 d008                      	rcall	delay
-000024 cfe1                      	rjmp	loop
+00001f e002                      	ldi		ctrl, 0b00000010
+000020 b905                      	out		PORTB, ctrl
+000021 d01b                      	rcall	pause
+                                 
+000022 e004                      	ldi		ctrl, 0b00000100
+000023 b905                      	out		PORTB, ctrl
+000024 d018                      	rcall	pause
+                                 
+000025 e008                      	ldi		ctrl, 0b00001000
+000026 b905                      	out		PORTB, ctrl
+000027 d015                      	rcall	pause
+                                 
+000028 cfdd                      	rjmp	loop
+                                 
+                                 
                                  
                                  step_rotate_clockwise:
-000025 e005                      	ldi		ctrl, 0x05
-000026 b905                      	out		PORTB, ctrl
-000027 d004                      	rcall	delay
+000029 e008                      	ldi		ctrl, 0b00001000
+00002a b905                      	out		PORTB, ctrl
+00002b d011                      	rcall	pause
                                  
-000028 e00b                      	ldi		ctrl, 0xB
-000029 b905                      	out		PORTB, ctrl
-00002a d001                      	rcall	delay
-00002b cfda                      	rjmp	loop
+00002c e004                      	ldi		ctrl, 0b00000100
+00002d b905                      	out		PORTB, ctrl
+00002e d00e                      	rcall	pause
                                  
+00002f e002                      	ldi		ctrl, 0b00000010
+000030 b905                      	out		PORTB, ctrl
+000031 d00b                      	rcall	pause
+                                 
+000032 e001                      	ldi		ctrl, 0b00000001
+000033 b905                      	out		PORTB, ctrl
+000034 d008                      	rcall	pause
+                                 
+000035 cfd0                      	rjmp	loop
+                                 
+                                 setzero_pos:
+000036 e004                      	ldi		ctrl,0b00000100
+000037 b905                      	out		PORTB, ctrl
+000038 d004                      	rcall	pause
+                                 
+000039 e000                      	ldi		ctrl, 0b00000000
+00003a b905                      	out		PORTB, ctrl
+00003b d001                      	rcall	pause
+00003c cfc9                      	rjmp	loop
+                                 
+                                 .include"delay.asm"
+                                 
+                                 .def	delayLoopLo = r24
+                                 .cseg
+                                 
+                                 pause:
+00003d ea1f                      	ldi		r17,0xAF
+00003e d008                      	rcall	delay
+00003f 9508                      	ret
+                                 
+                                 delaylong:
+                                 ;you need to load the value to be delayed in r17
+000040 ef9f                      	ldi		delayLoopHi, 0xff
+000041 ef8f                      	ldi		delayLoopLo, 0xff
+000042 940e 0047                 	call	delay
+000044 951a                      	dec		r17
+000045 f7d1                      	brne	delaylong
+000046 9508                      	ret
                                  
                                  delay:
-00002c ef1f                      	ldi		delayr, 0xff						; load delay register
-00002d d001                      	rcall	mydelay
-00002e 9508                      	ret
-                                 
-                                 mydelay:
-00002f 951a                      	dec		delayr
-000030 f7f1                      	brne	mydelay
-000031 9508                      	ret
+                                 	;load the 16 bit delay value to r25 and r24
+                                 	;initial call takes 4 clock cycles
+000047 9701                      	sbiw		delayLoopHi:delayLoopLo,1				;takes 2 clock cycles
+000048 f7f1                      	brne		delay									;takes 2  clock cycles
+000049 9508                      	ret													;takes 4 clock cycles
+                                 	;in total takes 4+(2+2)+4*delay = 4*delay+8 clock cycles
 
 
 RESOURCE USE INFORMATION
@@ -1147,37 +1194,37 @@ counted separately from r26..r31 here.
 "ATmega328P" register use summary:
 x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:  18 r17:   2 r18:   2 r19:   0 r20:   0 
-r21:   0 r22:   0 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
+r13:   0 r14:   0 r15:   0 r16:  29 r17:   2 r18:   2 r19:   0 r20:   0 
+r21:   0 r22:   0 r23:   0 r24:   2 r25:   2 r26:   0 r27:   0 r28:   0 
 r29:   0 r30:   0 r31:   0 
-Registers used: 3 out of 35 (8.6%)
+Registers used: 5 out of 35 (14.3%)
 
 "ATmega328P" instruction use summary:
 .lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   0 and   :   1 
 andi  :   0 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
 brcc  :   0 brcs  :   0 break :   0 breq  :   0 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
-brne  :   1 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
-brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   6 cbr   :   0 
+brne  :   2 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
+brvs  :   0 bset  :   0 bst   :   0 call  :   1 cbi   :   6 cbr   :   0 
 clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   0 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
 cpi   :   0 cpse  :   0 dec   :   1 eor   :   0 fmul  :   0 fmuls :   0 
 fmulsu:   0 icall :   0 ijmp  :   0 in    :   1 inc   :   0 jmp   :   0 
-ld    :   0 ldd   :   0 ldi   :   9 lds   :   0 lpm   :   0 lsl   :   0 
+ld    :   0 ldd   :   0 ldi   :  16 lds   :   0 lpm   :   0 lsl   :   0 
 lsr   :   0 mov   :   0 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
-neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :   7 pop   :   0 
-push  :   0 rcall :   5 ret   :   5 reti  :   0 rjmp  :   8 rol   :   0 
+neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :  12 pop   :   0 
+push  :   0 rcall :  11 ret   :   6 reti  :   0 rjmp  :   8 rol   :   0 
 ror   :   0 sbc   :   0 sbci  :   0 sbi   :   3 sbic  :   0 sbis  :   0 
-sbiw  :   0 sbr   :   0 sbrc  :   2 sbrs  :   0 sec   :   0 seh   :   0 
+sbiw  :   1 sbr   :   0 sbrc  :   3 sbrs  :   0 sec   :   0 seh   :   0 
 sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
 sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   0 
 sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 12 out of 113 (10.6%)
+Instructions used: 14 out of 113 (12.4%)
 
 "ATmega328P" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000064     98      0     98   32768   0.3%
+[.cseg] 0x000000 0x000094    146      0    146   32768   0.4%
 [.dseg] 0x000100 0x000100      0      0      0    2048   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 
