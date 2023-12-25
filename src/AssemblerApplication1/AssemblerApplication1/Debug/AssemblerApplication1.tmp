@@ -13,6 +13,7 @@
   <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328pdef.inc</FILE>
   <FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\led_controller.asm</FILE>
   <FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\delay.asm</FILE>
+  <FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\motor_controller.asm</FILE>
  </INCLUDED_FILES>
  <OBJECT_FILES>
   <FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\Debug\AssemblerApplication1.obj</FILE>
@@ -26,18 +27,18 @@
  </OUTPUT_FILES>
  <LABELS>
   <setup><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>29</LINE></setup>
-  <times_up><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>73</LINE></times_up>
-  <main_loop><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>41</LINE></main_loop>
-  <output_handler><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>65</LINE></output_handler>
-  <manual><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>50</LINE></manual>
-  <auto><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>62</LINE></auto>
-  <step_rotate_clockwise><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>101</LINE></step_rotate_clockwise>
-  <step_rotate_anticlockwise><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>79</LINE></step_rotate_anticlockwise>
-  <setzero_pos><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>121</LINE></setzero_pos>
+  <times_up><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>76</LINE></times_up>
+  <main_loop><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>43</LINE></main_loop>
+  <output_handler><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>67</LINE></output_handler>
+  <manual><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>52</LINE></manual>
+  <auto><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>64</LINE></auto>
+  <step_rotate_clockwise><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\motor_controller.asm</FILE><LINE>24</LINE></step_rotate_clockwise>
+  <step_rotate_anticlockwise><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\motor_controller.asm</FILE><LINE>2</LINE></step_rotate_anticlockwise>
+  <setzero_pos><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\motor_controller.asm</FILE><LINE>44</LINE></setzero_pos>
   <low_led_on><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\led_controller.asm</FILE><LINE>6</LINE></low_led_on>
-  <pause><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\delay.asm</FILE><LINE>5</LINE></pause>
   <ok_led_on><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\led_controller.asm</FILE><LINE>13</LINE></ok_led_on>
   <high_led_on><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\led_controller.asm</FILE><LINE>20</LINE></high_led_on>
+  <pause><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\delay.asm</FILE><LINE>5</LINE></pause>
   <delay><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\delay.asm</FILE><LINE>19</LINE></delay>
   <delaylong><FILE>D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\delay.asm</FILE><LINE>10</LINE></delaylong>
  </LABELS>

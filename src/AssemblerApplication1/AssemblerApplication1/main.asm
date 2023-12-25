@@ -20,11 +20,11 @@
 
 	.cseg 
 	.org	0x00									; set instruction starting address to 0x00
-		rjmp	setup
+		jmp	setup
 	.org	0x02									; interrupt call for zero crossing
 	
 	.org	0x000C									; for watchdog interrupt
-		rjmp	times_up
+		jmp	times_up
 	
 setup:
 	ldi 	ctrl, (1<<PD0) | (1<<PD1) | (1<<PD2)
@@ -35,7 +35,9 @@ setup:
 	ldi		ctrl, (1<<6)
 	sts		WDTCSR, ctrl			; enable watchdog interrupt
 
-	sei
+	sei		; enable global interrupts
+
+	wdr		; start watchdog timer
 
 
 main_loop:
@@ -60,7 +62,7 @@ manual:
 
 
 auto:
-	rjmp main_loop
+	rjmp	main_loop
 
 output_handler:
 	rcall	low_led_on
@@ -69,6 +71,7 @@ output_handler:
 	sts		WDTCSR, ctrl
 
 	sei								; enable global interuptts again
+	wdr
 
 times_up:
 	; interrupt handler for watchdog timer
@@ -76,53 +79,7 @@ times_up:
 	ldi		onesecpassed, 0x01
 	reti
 
-step_rotate_anticlockwise:
-	; sequence for the motor driver to rotate the motor anticlockwise
-	ldi		ctrl, 0b00000001
-	out		PORTB, ctrl
-	rcall	pause
-
-	ldi		ctrl, 0b00000010
-	out		PORTB, ctrl
-	rcall	pause
-
-	ldi		ctrl, 0b00000100
-	out		PORTB, ctrl
-	rcall	pause
-
-	ldi		ctrl, 0b00001000
-	out		PORTB, ctrl
-	rcall	pause
-
-	rjmp	main_loop
-
-
-
-step_rotate_clockwise:
-	; sequence for the motor driver to rotate the motor clockwise
-	ldi		ctrl, 0b00001000
-	out		PORTB, ctrl
-	rcall	pause
-
-	ldi		ctrl, 0b00000100
-	out		PORTB, ctrl
-	rcall	pause
-
-	ldi		ctrl, 0b00000010
-	out		PORTB, ctrl
-	rcall	pause
-
-	ldi		ctrl, 0b00000001
-	out		PORTB, ctrl
-	rcall	pause
-
-	rjmp	main_loop
-
-setzero_pos:
-	; zero position this is not working
-	ldi		ctrl,0b00000000
-	out		PORTB, ctrl
-	rjmp	main_loop
 
 .include	"led_controller.asm"
 .include	"delay.asm"
+.include	"motor_controller.asm"

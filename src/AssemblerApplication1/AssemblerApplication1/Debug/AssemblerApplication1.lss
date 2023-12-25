@@ -1,14 +1,16 @@
 
-AVRASM ver. 2.2.8  D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm Tue Dec 26 01:22:58 2023
+AVRASM ver. 2.2.8  D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm Tue Dec 26 01:55:37 2023
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
 D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm(9): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328pdef.inc'
-D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm(127): Including file 'D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\led_controller.asm'
-D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm(128): Including file 'D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\delay.asm'
+D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm(83): Including file 'D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\led_controller.asm'
+D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm(84): Including file 'D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\delay.asm'
+D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm(85): Including file 'D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\motor_controller.asm'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
 D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm(9): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328pdef.inc'
-D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm(127): Including file 'D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\led_controller.asm'
-D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm(128): Including file 'D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\delay.asm'
+D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm(83): Including file 'D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\led_controller.asm'
+D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm(84): Including file 'D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\delay.asm'
+D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm(85): Including file 'D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\motor_controller.asm'
                                  
                                  ;
                                  
@@ -1055,109 +1057,65 @@ D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\ma
                                  
                                  	.cseg 
                                  	.org	0x00									; set instruction starting address to 0x00
-000000 c00c                      		rjmp	setup
+000000 940c 000e                 		jmp	setup
                                  	.org	0x02									; interrupt call for zero crossing
                                  	
                                  	.org	0x000C									; for watchdog interrupt
-00000c c01d                      		rjmp	times_up
+00000c 940c 002d                 		jmp	times_up
                                  	
                                  setup:
-00000d e007                      	ldi 	ctrl, (1<<PD0) | (1<<PD1) | (1<<PD2)
-00000e b90a                      	out		DDRD, ctrl								; set output ports in PORTD
-00000f e00f                      	ldi		ctrl, (1<<PB0) | (1<<PB1) | (1<<PB2) | (1<<PB3)
-000010 b904                      	out		DDRB, ctrl								; set output ports in PORTB
+00000e e007                      	ldi 	ctrl, (1<<PD0) | (1<<PD1) | (1<<PD2)
+00000f b90a                      	out		DDRD, ctrl								; set output ports in PORTD
+000010 e00f                      	ldi		ctrl, (1<<PB0) | (1<<PB1) | (1<<PB2) | (1<<PB3)
+000011 b904                      	out		DDRB, ctrl								; set output ports in PORTB
                                  
-000011 e400                      	ldi		ctrl, (1<<6)
-000012 9300 0060                 	sts		WDTCSR, ctrl			; enable watchdog interrupt
+000012 e400                      	ldi		ctrl, (1<<6)
+000013 9300 0060                 	sts		WDTCSR, ctrl			; enable watchdog interrupt
                                  
-000014 9478                      	sei
+000015 9478                      	sei		; enable global interrupts
+                                 
+000016 95a8                      	wdr		; start watchdog timer
                                  
                                  
                                  main_loop:
-000015 fd50                      	sbrc	onesecpassed,0			; if one second timer passed
-000016 c00d                      	rjmp	output_handler			; somethings there in the output
+000017 fd50                      	sbrc	onesecpassed,0			; if one second timer passed
+000018 c00d                      	rjmp	output_handler			; somethings there in the output
                                  	; controls main loop depending on auto/manual conditions
-000017 b103                      	in		ctrl, PINB						; take PINB states
-000018 ff06                      	sbrs	ctrl, 6							; check for auto/manual conditions
-000019 c001                      	rjmp	manual
-00001a c008                      	rjmp	auto
+000019 b103                      	in		ctrl, PINB						; take PINB states
+00001a ff06                      	sbrs	ctrl, 6							; check for auto/manual conditions
+00001b c001                      	rjmp	manual
+00001c c008                      	rjmp	auto
                                  
                                  manual:
                                  	; controlling manual controlling
-00001b e720                      	ldi		r18, (1<<PB4) | (1<<PB5) | (1<<PB6)		; ignore ports controlling the motor driver
-00001c 2302                      	and		ctrl, r18
-00001d fd04                      	sbrc	ctrl, 4
-00001e c01b                      	rjmp	step_rotate_clockwise
-00001f fd05                      	sbrc	ctrl, 5
-000020 c00c                      	rjmp	step_rotate_anticlockwise
-000021 c025                      	rjmp	setzero_pos
-000022 cff2                      	rjmp	main_loop
+00001d e720                      	ldi		r18, (1<<PB4) | (1<<PB5) | (1<<PB6)		; ignore ports controlling the motor driver
+00001e 2302                      	and		ctrl, r18
+00001f fd04                      	sbrc	ctrl, 4
+000020 c035                      	rjmp	step_rotate_clockwise
+000021 fd05                      	sbrc	ctrl, 5
+000022 c026                      	rjmp	step_rotate_anticlockwise
+000023 c03f                      	rjmp	setzero_pos
+000024 cff2                      	rjmp	main_loop
                                  
                                  
                                  auto:
-000023 cff1                      	rjmp main_loop
+000025 cff1                      	rjmp	main_loop
                                  
                                  output_handler:
-000024 d025                      	rcall	low_led_on
-000025 e050                      	ldi		onesecpassed, 0x00		; set onesecpassed back to 0
-000026 e400                      	ldi		ctrl, (1<<6)			; enable watchdog intterupt again
-000027 9300 0060                 	sts		WDTCSR, ctrl
+000026 d009                      	rcall	low_led_on
+000027 e050                      	ldi		onesecpassed, 0x00		; set onesecpassed back to 0
+000028 e400                      	ldi		ctrl, (1<<6)			; enable watchdog intterupt again
+000029 9300 0060                 	sts		WDTCSR, ctrl
                                  
-000029 9478                      	sei								; enable global interuptts again
+00002b 9478                      	sei								; enable global interuptts again
+00002c 95a8                      	wdr
                                  
                                  times_up:
                                  	; interrupt handler for watchdog timer
-00002a 94f8                      	cli
-00002b e051                      	ldi		onesecpassed, 0x01
-00002c 9518                      	reti
+00002d 94f8                      	cli
+00002e e051                      	ldi		onesecpassed, 0x01
+00002f 9518                      	reti
                                  
-                                 step_rotate_anticlockwise:
-                                 	; sequence for the motor driver to rotate the motor anticlockwise
-00002d e001                      	ldi		ctrl, 0b00000001
-00002e b905                      	out		PORTB, ctrl
-00002f d026                      	rcall	pause
-                                 
-000030 e002                      	ldi		ctrl, 0b00000010
-000031 b905                      	out		PORTB, ctrl
-000032 d023                      	rcall	pause
-                                 
-000033 e004                      	ldi		ctrl, 0b00000100
-000034 b905                      	out		PORTB, ctrl
-000035 d020                      	rcall	pause
-                                 
-000036 e008                      	ldi		ctrl, 0b00001000
-000037 b905                      	out		PORTB, ctrl
-000038 d01d                      	rcall	pause
-                                 
-000039 cfdb                      	rjmp	main_loop
-                                 
-                                 
-                                 
-                                 step_rotate_clockwise:
-                                 	; sequence for the motor driver to rotate the motor clockwise
-00003a e008                      	ldi		ctrl, 0b00001000
-00003b b905                      	out		PORTB, ctrl
-00003c d019                      	rcall	pause
-                                 
-00003d e004                      	ldi		ctrl, 0b00000100
-00003e b905                      	out		PORTB, ctrl
-00003f d016                      	rcall	pause
-                                 
-000040 e002                      	ldi		ctrl, 0b00000010
-000041 b905                      	out		PORTB, ctrl
-000042 d013                      	rcall	pause
-                                 
-000043 e001                      	ldi		ctrl, 0b00000001
-000044 b905                      	out		PORTB, ctrl
-000045 d010                      	rcall	pause
-                                 
-000046 cfce                      	rjmp	main_loop
-                                 
-                                 setzero_pos:
-                                 	; zero position this is not working
-000047 e000                      	ldi		ctrl,0b00000000
-000048 b905                      	out		PORTB, ctrl
-000049 cfcb                      	rjmp	main_loop
                                  
                                  .include	"led_controller.asm"
                                  
@@ -1167,49 +1125,98 @@ D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\ma
                                  .cseg
                                  low_led_on:
                                  	; indicating frequency is low
-00004a 9828                      	cbi		ledP, ledhigh		
-00004b 982a                      	cbi		ledP, ledok
-00004c 9a29                      	sbi		ledP, ledlow
-00004d 9508                      	ret
+000030 9828                      	cbi		ledP, ledhigh		
+000031 982a                      	cbi		ledP, ledok
+000032 9a29                      	sbi		ledP, ledlow
+000033 9508                      	ret
                                  
                                  ok_led_on:
                                  	; indicating frequnecy is okay
-00004e 9828                      	cbi		ledP, ledhigh
-00004f 9829                      	cbi		ledP, ledlow
-000050 9a2a                      	sbi		ledP, ledok
-000051 9508                      	ret
+000034 9828                      	cbi		ledP, ledhigh
+000035 9829                      	cbi		ledP, ledlow
+000036 9a2a                      	sbi		ledP, ledok
+000037 9508                      	ret
                                  
                                  high_led_on:
                                  	; indicating frequency is high
-000052 982a                      	cbi		ledP, ledok
-000053 9829                      	cbi		ledP, ledlow
-000054 9a28                      	sbi		ledP, ledhigh
+000038 982a                      	cbi		ledP, ledok
+000039 9829                      	cbi		ledP, ledlow
+00003a 9a28                      	sbi		ledP, ledhigh
                                  .include	"delay.asm"
-000055 9508                      
+00003b 9508                      
                                  .def	delayLoopLo = r24
                                  .cseg
                                  
                                  pause:
-000056 ea1f                      	ldi		r17,0xAF
-000057 d008                      	rcall	delay
-000058 9508                      	ret
+00003c ea1f                      	ldi		r17,0xAF
+00003d d008                      	rcall	delay
+00003e 9508                      	ret
                                  
                                  delaylong:
                                  ;you need to load the value to be delayed in r17
-000059 ef9f                      	ldi		delayLoopHi, 0xff
-00005a ef8f                      	ldi		delayLoopLo, 0xff
-00005b 940e 0060                 	call	delay
-00005d 951a                      	dec		r17
-00005e f7d1                      	brne	delaylong
-00005f 9508                      	ret
+00003f ef9f                      	ldi		delayLoopHi, 0xff
+000040 ef8f                      	ldi		delayLoopLo, 0xff
+000041 940e 0046                 	call	delay
+000043 951a                      	dec		r17
+000044 f7d1                      	brne	delaylong
+000045 9508                      	ret
                                  
                                  delay:
                                  	;load the 16 bit delay value to r25 and r24
                                  	;initial call takes 4 clock cycles
-000060 9701                      	sbiw		delayLoopHi:delayLoopLo,1				;takes 2 clock cycles
-000061 f7f1                      	brne		delay									;takes 2  clock cycles
-000062 9508                      	ret													;takes 4 clock cycles
+000046 9701                      	sbiw		delayLoopHi:delayLoopLo,1				;takes 2 clock cycles
+000047 f7f1                      	brne		delay									;takes 2  clock cycles
+000048 9508                      	ret													;takes 4 clock cycles
                                  	;in total takes 4+(2+2)+4*delay = 4*delay+8 clock cycles
+                                 .include	"motor_controller.asm"
+                                 
+                                 step_rotate_anticlockwise:
+                                 	; sequence for the motor driver to rotate the motor anticlockwise
+000049 e001                      	ldi		ctrl, 0b00000001
+00004a b905                      	out		PORTB, ctrl
+00004b dff0                      	rcall	pause
+                                 
+00004c e002                      	ldi		ctrl, 0b00000010
+00004d b905                      	out		PORTB, ctrl
+00004e dfed                      	rcall	pause
+                                 
+00004f e004                      	ldi		ctrl, 0b00000100
+000050 b905                      	out		PORTB, ctrl
+000051 dfea                      	rcall	pause
+                                 
+000052 e008                      	ldi		ctrl, 0b00001000
+000053 b905                      	out		PORTB, ctrl
+000054 dfe7                      	rcall	pause
+                                 
+000055 cfc1                      	rjmp	main_loop
+                                 
+                                 
+                                 
+                                 step_rotate_clockwise:
+                                 	; sequence for the motor driver to rotate the motor clockwise
+000056 e008                      	ldi		ctrl, 0b00001000
+000057 b905                      	out		PORTB, ctrl
+000058 dfe3                      	rcall	pause
+                                 
+000059 e004                      	ldi		ctrl, 0b00000100
+00005a b905                      	out		PORTB, ctrl
+00005b dfe0                      	rcall	pause
+                                 
+00005c e002                      	ldi		ctrl, 0b00000010
+00005d b905                      	out		PORTB, ctrl
+00005e dfdd                      	rcall	pause
+                                 
+00005f e001                      	ldi		ctrl, 0b00000001
+000060 b905                      	out		PORTB, ctrl
+000061 dfda                      	rcall	pause
+                                 
+000062 cfb4                      	rjmp	main_loop
+                                 
+                                 setzero_pos:
+                                 	; zero position this is not working
+000063 e000                      	ldi		ctrl,0b00000000
+000064 b905                      	out		PORTB, ctrl
+000065 cfb1                      	rjmp	main_loop
 
 
 RESOURCE USE INFORMATION
@@ -1244,22 +1251,22 @@ brvs  :   0 bset  :   0 bst   :   0 call  :   1 cbi   :   6 cbr   :   0
 clc   :   0 clh   :   0 cli   :   1 cln   :   0 clr   :   0 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
 cpi   :   0 cpse  :   0 dec   :   1 eor   :   0 fmul  :   0 fmuls :   0 
-fmulsu:   0 icall :   0 ijmp  :   0 in    :   1 inc   :   0 jmp   :   0 
+fmulsu:   0 icall :   0 ijmp  :   0 in    :   1 inc   :   0 jmp   :   2 
 ld    :   0 ldd   :   0 ldi   :  19 lds   :   0 lpm   :   0 lsl   :   0 
 lsr   :   0 mov   :   0 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
 neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :  11 pop   :   0 
-push  :   0 rcall :  10 ret   :   6 reti  :   1 rjmp  :  13 rol   :   0 
+push  :   0 rcall :  10 ret   :   6 reti  :   1 rjmp  :  11 rol   :   0 
 ror   :   0 sbc   :   0 sbci  :   0 sbi   :   3 sbic  :   0 sbis  :   0 
 sbiw  :   1 sbr   :   0 sbrc  :   3 sbrs  :   1 sec   :   0 seh   :   0 
 sei   :   2 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
 sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   2 
-sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 19 out of 113 (16.8%)
+sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   2 
+Instructions used: 21 out of 113 (18.6%)
 
 "ATmega328P" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x0000c6    176      0    176   32768   0.5%
+[.cseg] 0x000000 0x0000cc    184      0    184   32768   0.6%
 [.dseg] 0x000100 0x000100      0      0      0    2048   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 
