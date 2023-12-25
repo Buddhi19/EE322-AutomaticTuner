@@ -8,11 +8,6 @@
 
 .include "m328pdef.inc"
 	
-	.equ	ledhigh = 0								; define higher frequency indicating ldr pin 
-	.equ	ledlow  = 1								; define lower frequency indicating ldr pin 
-	.equ	ledok   = 2								; define accepted frequecy indicating ldr pin
-	.equ	ledP	= PORTB							; define led PORT
-
 	.equ	mot_in1 = 0								; define motor driver input pin1
 	.equ	mot_in2 = 1								; define motor driver input pin2
 	.equ	mot_in3 = 2								; define motor driver input pin3
@@ -21,10 +16,15 @@
 	.def	ctrl = r16								; define temporary register to controlling
 	.def	delayr  = r17							; define delay counter register
 
+	.def	onesecpassed = r21						; check one second passed
+
 	.cseg 
 	.org	0x00									; set instruction starting address to 0x00
 		rjmp	setup
 	.org	0x02									; interrupt call for zero crossing
+	
+	.org	0x000C									; for watchdog interrupt
+		rjmp	times_up
 	
 setup:
 	ldi 	ctrl, (1<<PD0) | (1<<PD1) | (1<<PD2)
@@ -32,42 +32,49 @@ setup:
 	ldi		ctrl, (1<<PB0) | (1<<PB1) | (1<<PB2) | (1<<PB3)
 	out		DDRB, ctrl								; set output ports in PORTB
 
-loop:
-	in		ctrl, PINB
-	ldi		r18, (1<<PB4) | (1<<PB5) | (1<<PB6)
+	ldi		ctrl, (1<<6)
+	sts		WDTCSR, ctrl			; enable watchdog interrupt
+
+	sei
+
+
+main_loop:
+	sbrc	onesecpassed,0			; if one second timer passed
+	rjmp	output_handler			; somethings there in the output
+	; controls main loop depending on auto/manual conditions
+	in		ctrl, PINB						; take PINB states
+	sbrs	ctrl, 6							; check for auto/manual conditions
+	rjmp	manual
+	rjmp	auto
+
+manual:
+	; controlling manual controlling
+	ldi		r18, (1<<PB4) | (1<<PB5) | (1<<PB6)		; ignore ports controlling the motor driver
 	and		ctrl, r18
 	sbrc	ctrl, 4
 	rjmp	step_rotate_clockwise
 	sbrc	ctrl, 5
 	rjmp	step_rotate_anticlockwise
-	
-	sbrc	ctrl, 6
 	rjmp	setzero_pos
+	rjmp	main_loop
 
-	rjmp	loop
 
+auto:
+	rjmp main_loop
 
-low_led_on:
-	; indicating frequency is low
-	cbi		ledP, ledhigh		
-	cbi		ledP, ledok
-	sbi		ledP, ledlow
-	ret
+output_handler:
+	rcall	low_led_on
+	ldi		onesecpassed, 0x00		; set onesecpassed back to 0
+	ldi		ctrl, (1<<6)			; enable watchdog intterupt again
+	sts		WDTCSR, ctrl
 
-ok_led_on:
-	; indicating frequnecy is okay
-	cbi		ledP, ledhigh
-	cbi		ledP, ledlow
-	sbi		ledP, ledok
-	ret
+	sei								; enable global interuptts again
 
-high_led_on:
-	; indicating frequency is high
-	cbi		ledP, ledok
-	cbi		ledP, ledlow
-	sbi		ledP, ledhigh
-	ret
-
+times_up:
+	; interrupt handler for watchdog timer
+	cli
+	ldi		onesecpassed, 0x01
+	reti
 
 step_rotate_anticlockwise:
 	; sequence for the motor driver to rotate the motor anticlockwise
@@ -87,7 +94,7 @@ step_rotate_anticlockwise:
 	out		PORTB, ctrl
 	rcall	pause
 
-	rjmp	loop
+	rjmp	main_loop
 
 
 
@@ -109,17 +116,13 @@ step_rotate_clockwise:
 	out		PORTB, ctrl
 	rcall	pause
 
-	rjmp	loop
+	rjmp	main_loop
 
 setzero_pos:
 	; zero position this is not working
-	ldi		ctrl,0b00000100
+	ldi		ctrl,0b00000000
 	out		PORTB, ctrl
-	rcall	pause
+	rjmp	main_loop
 
-	ldi		ctrl, 0b00000000
-	out		PORTB, ctrl
-	rcall	pause
-	rjmp	loop
-
-.include"delay.asm"
+.include	"led_controller.asm"
+.include	"delay.asm"
