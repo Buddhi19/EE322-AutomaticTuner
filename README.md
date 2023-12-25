@@ -5,6 +5,7 @@ Project Automatic Tuner: Implementing an Automatic Tuner for the EE322 mini-proj
 | Athulya Ratnayake | Thimira Hirushan | Buddhi Wijenayake |
 |---|---|---|
 | | | Audio Processing |
+| | | Watchdog Timer |
 
 # Planned
 | Tasks | Assignees|
@@ -13,7 +14,7 @@ Project Automatic Tuner: Implementing an Automatic Tuner for the EE322 mini-proj
 | Full proteus set-up | |
 | Analog Voltage Reading | |
 | Noise Filtering | |
-| Button Handling | |
+| Audio Signal not passing zero issue| |
 
 # DONE
 | Task|
@@ -21,6 +22,8 @@ Project Automatic Tuner: Implementing an Automatic Tuner for the EE322 mini-proj
 | LED Indication |
 | Sample proteus set-up |
 | Motor Control |
+| Button Handling |
+| Low Pass filter with amplifier |
 
 # Proteus ICs Used
 
@@ -29,5 +32,6 @@ Project Automatic Tuner: Implementing an Automatic Tuner for the EE322 mini-proj
 | Arduino | Atmega328p chip |
 | Motor driver | L293D |
 | Bipolar stepper motor | NEMA 17 |
+| Low Noise Op-Amp | |
 
 # UML Diagram
