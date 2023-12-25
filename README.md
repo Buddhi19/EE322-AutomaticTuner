@@ -32,5 +32,6 @@ Project Automatic Tuner: Implementing an Automatic Tuner for the EE322 mini-proj
 | Arduino | Atmega328p chip |
 | Motor driver | L293D |
 | Bipolar stepper motor | NEMA 17 |
+| Low Noise Op-Amp | |
 
 # UML Diagram
