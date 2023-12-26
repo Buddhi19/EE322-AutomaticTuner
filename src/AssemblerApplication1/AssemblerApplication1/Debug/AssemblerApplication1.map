@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm Wed Dec 27 00:31:15 2023
+AVRASM ver. 2.2.8  D:\PROJECTS\EE322_MiniProject\src\AssemblerApplication1\AssemblerApplication1\main.asm Wed Dec 27 01:48:51 2023
 
 
 EQU  SIGNATURE_000 0000001e
@@ -702,25 +702,26 @@ EQU  mot_in4      00000003
 DEF  ctrl         r16
 DEF  delayr       r17
 DEF  onesecpassed r21
+DEF  crosscounter r23
 CSEG setup        0000000e
-CSEG isr          0000003b
-CSEG WDT          00000039
-CSEG main_loop    0000001c
-CSEG output_handler 0000002b
-CSEG manual       00000022
-CSEG auto         0000002a
-CSEG step_rotate_clockwise 00000062
-CSEG step_rotate_anticlockwise 00000055
-CSEG setzero_pos  0000006f
-CSEG low_led_on   0000003c
+CSEG isr_int1     00000043
+CSEG WDT          00000040
+CSEG main_loop    00000022
+CSEG output_handler 00000031
+CSEG manual       00000028
+CSEG auto         00000030
+CSEG step_rotate_clockwise 0000006f
+CSEG step_rotate_anticlockwise 00000062
+CSEG setzero_pos  0000007c
 EQU  ledhigh      00000000
 EQU  ledlow       00000001
 EQU  ledok        00000002
 EQU  ledP         0000000b
-CSEG ok_led_on    00000040
-CSEG high_led_on  00000044
+CSEG low_led_on   00000049
+CSEG ok_led_on    0000004d
+CSEG high_led_on  00000051
 DEF  delayLoopHi  r25
 DEF  delayLoopLo  r24
-CSEG pause        00000048
-CSEG delay        00000052
-CSEG delaylong    0000004b
+CSEG pause        00000055
+CSEG delay        0000005f
+CSEG delaylong    00000058
