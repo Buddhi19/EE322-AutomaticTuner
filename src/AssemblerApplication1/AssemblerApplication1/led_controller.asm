@@ -1,7 +1,7 @@
 .equ	ledhigh = 0								; define higher frequency indicating ldr pin 
 .equ	ledlow  = 1								; define lower frequency indicating ldr pin 
 .equ	ledok   = 2								; define accepted frequecy indicating ldr pin
-.equ	ledP	= PORTB							; define led PORT
+.equ	ledP	= PORTD							; define led PORT
 .cseg
 low_led_on:
 	; indicating frequency is low

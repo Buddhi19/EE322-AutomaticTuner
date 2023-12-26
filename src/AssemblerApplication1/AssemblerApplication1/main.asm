@@ -22,9 +22,9 @@
 	.org	0x00									; set instruction starting address to 0x00
 		jmp	setup
 	.org	0x02									; interrupt call for zero crossing
-	
+		jmp		isr
 	.org	0x000C									; for watchdog interrupt
-		jmp	times_up
+		jmp		WDT
 	
 setup:
 	ldi 	ctrl, (1<<PD0) | (1<<PD1) | (1<<PD2)
@@ -32,20 +32,23 @@ setup:
 	ldi		ctrl, (1<<PB0) | (1<<PB1) | (1<<PB2) | (1<<PB3)
 	out		DDRB, ctrl								; set output ports in PORTB
 
-	ldi		ctrl, (1<<6)
-	sts		WDTCSR, ctrl			; enable watchdog interrupt
+	wdr
+	lds		ctrl, WDTCSR
+	ori		ctrl ,(1<<WDE)|(1<<WDCE)				; enable watchdog interrupts
+	sts		WDTCSR, ctrl
 
-	sei		; enable global interrupts
+	ldi		ctrl, (1<<WDIE) | (1<<WDP2) | (1<<WDP1)	; set watchdog timer for one second
+	sts		WDTCSR, ctrl
 
-	wdr		; start watchdog timer
+	sei												; enable global interrupts
 
 
 main_loop:
-	sbrc	onesecpassed,0			; if one second timer passed
-	rjmp	output_handler			; somethings there in the output
+	sbrc	onesecpassed,0							; if one second timer passed
+	rjmp	output_handler							; somethings there in the output
 	; controls main loop depending on auto/manual conditions
-	in		ctrl, PINB						; take PINB states
-	sbrs	ctrl, 6							; check for auto/manual conditions
+	in		ctrl, PINB								; take PINB states
+	sbrs	ctrl, 6									; check for auto/manual conditions
 	rjmp	manual
 	rjmp	auto
 
@@ -66,19 +69,25 @@ auto:
 
 output_handler:
 	rcall	low_led_on
-	ldi		onesecpassed, 0x00		; set onesecpassed back to 0
-	ldi		ctrl, (1<<6)			; enable watchdog intterupt again
+	ldi		onesecpassed, 0x00						; set onesecpassed back to 0
+	cli
+	wdr
+	lds		ctrl, WDTCSR
+	ori		ctrl ,(1<<WDE)|(1<<WDCE)				; enable watchdog interrupts
 	sts		WDTCSR, ctrl
 
-	sei								; enable global interuptts again
-	wdr
+	ldi		ctrl, (1<<WDIE) | (1<<WDP2) | (1<<WDP1)	; set watchdog timer for one second
+	sts		WDTCSR, ctrl
 
-times_up:
-	; interrupt handler for watchdog timer
-	cli
+	sei												; enable global interrupts
+	rjmp	main_loop
+
+WDT:
+	; interrupt handler for watchdog timers
 	ldi		onesecpassed, 0x01
 	reti
-
+isr:
+	reti
 
 .include	"led_controller.asm"
 .include	"delay.asm"
