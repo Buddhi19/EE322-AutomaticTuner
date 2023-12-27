@@ -20,6 +20,9 @@
 	.def	crosscounterL = r23						; low register for count the number of times the signal passed 3.3V
 	.def	crosscounterH = r22						; high register for crosscounter
 
+	.def	freq_lowerbound = r19					; lower register used to compare results
+	.def	freq_upperbound = r20					; upper register used to compare the results
+
 	.cseg 
 	.org	0x00									; set instruction starting address to 0x00
 		jmp	setup
@@ -45,7 +48,7 @@ setup:
 	ldi		ctrl, (1<<WDIE) | (1<<WDP2) | (1<<WDP1)	; set watchdog timer for one second
 	sts		WDTCSR, ctrl
 
-	ldi		ctrl, (1<<2)		
+	ldi		ctrl, (1<<2)|(1<<3)						; interrupt call for a rising edge		
 	sts		EICRA, ctrl								; interrupt call for logical change at INT1
 
 	ldi		ctrl, (1<<1)
@@ -78,14 +81,17 @@ auto:
 	rjmp	main_loop
 
 output_handler:
-	in		ctrl, PIND								; Debugger code
-	ori		ctrl, (1<<1)
-	out		PORTD, ctrl
+;	in		ctrl, PIND								; Debugger code
+;	ori		ctrl, (1<<1)
+	;out		PORTD, ctrl
+	
+	rcall	indicator
 
 	ldi		crosscounterL, 0x00						; set crosscounter back to 0
 	ldi		crosscounterH, 0x00
 
-	ldi		onesecpassed, 0x00						; set onesecpassed back to 0										
+	ldi		onesecpassed, 0x00						; set onesecpassed back to 0	
+										
 	wdr												; start timed sequence
 	lds		ctrl, WDTCSR
 	ori		ctrl ,(1<<WDE)|(1<<WDCE)				; enable watchdog interrupts
@@ -104,25 +110,22 @@ WDT:												; interrupt handler for watchdog timers
 
 
 isr_int1:
-	in		ctrl, PIND								; Debugger code 
-	ori		ctrl, (1<<0)
-	out		PORTD, ctrl
+;	in		ctrl, PIND								; Debugger code 
+;	ori		ctrl, (1<<0)
+;	out		PORTD, ctrl
 
-	inc		crosscounterL
-	brne	no_overflow
+	inc		crosscounterL							; increment the lower register
+	brne	no_overflow								; branch if no overflow i.e (0x00)
 
-	inc		crosscounterH
-	ldi		crosscounterL, 0x00
+	inc		crosscounterH							; increment the higher register at an overflow
 
 	reti
 
 no_overflow:
-	reti
+	reti											; close the interrupt routine at no overflow
 
-indicator:
-	lsr		crosscounterH							; right shift the counter (divide by two) as there are two counts per cycle
-	ldi		ctrl, 0xAE
 
 .include	"led_controller.asm"
 .include	"delay.asm"
 .include	"motor_controller.asm"
+.include	"output_controller.asm"

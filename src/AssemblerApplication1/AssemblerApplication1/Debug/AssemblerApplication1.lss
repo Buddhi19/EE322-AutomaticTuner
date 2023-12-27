@@ -1,16 +1,18 @@
 
-AVRASM ver. 2.2.8  D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm Wed Dec 27 19:31:23 2023
+AVRASM ver. 2.2.8  D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm Wed Dec 27 22:29:55 2023
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
 D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(9): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328pdef.inc'
-D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(126): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\led_controller.asm'
-D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(127): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\delay.asm'
-D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(128): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\motor_controller.asm'
+D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(128): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\led_controller.asm'
+D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(129): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\delay.asm'
+D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(130): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\motor_controller.asm'
+D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(131): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\output_controller.asm'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
 D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(9): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328pdef.inc'
-D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(126): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\led_controller.asm'
-D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(127): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\delay.asm'
-D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(128): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\motor_controller.asm'
+D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(128): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\led_controller.asm'
+D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(129): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\delay.asm'
+D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(130): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\motor_controller.asm'
+D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(131): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\output_controller.asm'
                                  
                                  ;
                                  
@@ -1057,13 +1059,16 @@ D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1
                                  	.def	crosscounterL = r23						; low register for count the number of times the signal passed 3.3V
                                  	.def	crosscounterH = r22						; high register for crosscounter
                                  
+                                 	.def	freq_lowerbound = r19					; lower register used to compare results
+                                 	.def	freq_upperbound = r20					; upper register used to compare the results
+                                 
                                  	.cseg 
                                  	.org	0x00									; set instruction starting address to 0x00
 000000 940c 000e                 		jmp	setup
                                  	.org	0x004									; interrupt call for zero crossing
-000004 940c 0046                 		jmp		isr_int1
+000004 940c 0044                 		jmp		isr_int1
                                  	.org	0x000C									; for watchdog interrupt
-00000c 940c 0043                 		jmp		WDT
+00000c 940c 0041                 		jmp		WDT
                                  	
                                  setup:
 00000e e007                      	ldi 	ctrl, (1<<PD0) | (1<<PD1) | (1<<PD2)
@@ -1082,7 +1087,7 @@ D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1
 00001a e406                      	ldi		ctrl, (1<<WDIE) | (1<<WDP2) | (1<<WDP1)	; set watchdog timer for one second
 00001b 9300 0060                 	sts		WDTCSR, ctrl
                                  
-00001d e004                      	ldi		ctrl, (1<<2)		
+00001d e00c                      	ldi		ctrl, (1<<2)|(1<<3)						; interrupt call for a rising edge		
 00001e 9300 0069                 	sts		EICRA, ctrl								; interrupt call for logical change at INT1
                                  
 000020 e002                      	ldi		ctrl, (1<<1)
@@ -1104,10 +1109,10 @@ D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1
 000029 e720                      	ldi		r18, (1<<PB4) | (1<<PB5) | (1<<PB6)		; ignore ports controlling the motor driver
 00002a 2302                      	and		ctrl, r18
 00002b fd04                      	sbrc	ctrl, 4									; skip if clockwise button is not pressed
-00002c c04a                      	rjmp	step_rotate_clockwise
+00002c c042                      	rjmp	step_rotate_clockwise
 00002d fd05                      	sbrc	ctrl, 5									; skip if anticlockwise button is not pressed
-00002e c03b                      	rjmp	step_rotate_anticlockwise
-00002f c054                      	rjmp	setzero_pos								; if non of them is pressed set all ports to 0
+00002e c033                      	rjmp	step_rotate_anticlockwise
+00002f c04c                      	rjmp	setzero_pos								; if non of them is pressed set all ports to 0
 000030 cff2                      	rjmp	main_loop
                                  
                                  
@@ -1115,50 +1120,49 @@ D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1
 000031 cff1                      	rjmp	main_loop
                                  
                                  output_handler:
-000032 b109                      	in		ctrl, PIND								; Debugger code
-000033 6002                      	ori		ctrl, (1<<1)
-000034 b90b                      	out		PORTD, ctrl
+                                 ;	in		ctrl, PIND								; Debugger code
+                                 ;	ori		ctrl, (1<<1)
+                                 	;out		PORTD, ctrl
+                                 	
+000032 d04c                      	rcall	indicator
                                  
-000035 e070                      	ldi		crosscounterL, 0x00						; set crosscounter back to 0
-000036 e060                      	ldi		crosscounterH, 0x00
+000033 e070                      	ldi		crosscounterL, 0x00						; set crosscounter back to 0
+000034 e060                      	ldi		crosscounterH, 0x00
                                  
-000037 e050                      	ldi		onesecpassed, 0x00						; set onesecpassed back to 0										
-000038 95a8                      	wdr												; start timed sequence
-000039 9100 0060                 	lds		ctrl, WDTCSR
-00003b 6108                      	ori		ctrl ,(1<<WDE)|(1<<WDCE)				; enable watchdog interrupts
-00003c 9300 0060                 	sts		WDTCSR, ctrl
+000035 e050                      	ldi		onesecpassed, 0x00						; set onesecpassed back to 0	
+                                 										
+000036 95a8                      	wdr												; start timed sequence
+000037 9100 0060                 	lds		ctrl, WDTCSR
+000039 6108                      	ori		ctrl ,(1<<WDE)|(1<<WDCE)				; enable watchdog interrupts
+00003a 9300 0060                 	sts		WDTCSR, ctrl
                                  
-00003e e406                      	ldi		ctrl, (1<<WDIE) | (1<<WDP2) | (1<<WDP1)	; set watchdog timer for one second
-00003f 9300 0060                 	sts		WDTCSR, ctrl
+00003c e406                      	ldi		ctrl, (1<<WDIE) | (1<<WDP2) | (1<<WDP1)	; set watchdog timer for one second
+00003d 9300 0060                 	sts		WDTCSR, ctrl
                                  
-000041 9478                      	sei												; enable global interrupts
-000042 cfe0                      	rjmp	main_loop
+00003f 9478                      	sei												; enable global interrupts
+000040 cfe2                      	rjmp	main_loop
                                  
                                  WDT:												; interrupt handler for watchdog timers
-000043 94f8                      	cli												; disable interrupts
-000044 e051                      	ldi		onesecpassed, 0x01
-000045 9518                      	reti
+000041 94f8                      	cli												; disable interrupts
+000042 e051                      	ldi		onesecpassed, 0x01
+000043 9518                      	reti
                                  
                                  
                                  isr_int1:
-000046 b109                      	in		ctrl, PIND								; Debugger code 
-000047 6001                      	ori		ctrl, (1<<0)
-000048 b90b                      	out		PORTD, ctrl
+                                 ;	in		ctrl, PIND								; Debugger code 
+                                 ;	ori		ctrl, (1<<0)
+                                 ;	out		PORTD, ctrl
                                  
-000049 9573                      	inc		crosscounterL
-00004a f419                      	brne	no_overflow
+000044 9573                      	inc		crosscounterL							; increment the lower register
+000045 f411                      	brne	no_overflow								; branch if no overflow i.e (0x00)
                                  
-00004b 9563                      	inc		crosscounterH
-00004c e070                      	ldi		crosscounterL, 0x00
+000046 9563                      	inc		crosscounterH							; increment the higher register at an overflow
                                  
-00004d 9518                      	reti
+000047 9518                      	reti
                                  
                                  no_overflow:
-00004e 9518                      	reti
+000048 9518                      	reti											; close the interrupt routine at no overflow
                                  
-                                 indicator:
-00004f 9566                      	lsr		crosscounterH							; right shift the counter (divide by two) as there are two counts per cycle
-000050 ea0e                      	ldi		ctrl, 0xAE
                                  
                                  .include	"led_controller.asm"
                                  
@@ -1168,98 +1172,134 @@ D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1
                                  .cseg
                                  low_led_on:
                                  	; indicating frequency is low
-000051 9858                      	cbi		ledP, ledhigh		
-000052 985a                      	cbi		ledP, ledok
-000053 9a59                      	sbi		ledP, ledlow
-000054 9508                      	ret
+000049 9858                      	cbi		ledP, ledhigh		
+00004a 985a                      	cbi		ledP, ledok
+00004b 9a59                      	sbi		ledP, ledlow
+00004c 9508                      	ret
                                  
                                  ok_led_on:
                                  	; indicating frequnecy is okay
-000055 9858                      	cbi		ledP, ledhigh
-000056 9859                      	cbi		ledP, ledlow
-000057 9a5a                      	sbi		ledP, ledok
-000058 9508                      	ret
+00004d 9858                      	cbi		ledP, ledhigh
+00004e 9859                      	cbi		ledP, ledlow
+00004f 9a5a                      	sbi		ledP, ledok
+000050 9508                      	ret
                                  
                                  high_led_on:
                                  	; indicating frequency is high
-000059 985a                      	cbi		ledP, ledok
-00005a 9859                      	cbi		ledP, ledlow
-00005b 9a58                      	sbi		ledP, ledhigh
+000051 985a                      	cbi		ledP, ledok
+000052 9859                      	cbi		ledP, ledlow
+000053 9a58                      	sbi		ledP, ledhigh
                                  .include	"delay.asm"
-00005c 9508                      
+000054 9508                      
                                  .def	delayLoopLo = r24
                                  .cseg
                                  
                                  pause:
-00005d ea1f                      	ldi		r17,0xAF
-00005e d008                      	rcall	delay
-00005f 9508                      	ret
+000055 ea1f                      	ldi		r17,0xAF
+000056 d008                      	rcall	delay
+000057 9508                      	ret
                                  
                                  delaylong:
                                  ;you need to load the value to be delayed in r17
-000060 ef9f                      	ldi		delayLoopHi, 0xff
-000061 ef8f                      	ldi		delayLoopLo, 0xff
-000062 940e 0067                 	call	delay
-000064 951a                      	dec		r17
-000065 f7d1                      	brne	delaylong
-000066 9508                      	ret
+000058 ef9f                      	ldi		delayLoopHi, 0xff
+000059 ef8f                      	ldi		delayLoopLo, 0xff
+00005a 940e 005f                 	call	delay
+00005c 951a                      	dec		r17
+00005d f7d1                      	brne	delaylong
+00005e 9508                      	ret
                                  
                                  delay:
                                  	;load the 16 bit delay value to r25 and r24
                                  	;initial call takes 4 clock cycles
-000067 9701                      	sbiw		delayLoopHi:delayLoopLo,1				;takes 2 clock cycles
-000068 f7f1                      	brne		delay									;takes 2  clock cycles
-000069 9508                      	ret													;takes 4 clock cycles
+00005f 9701                      	sbiw		delayLoopHi:delayLoopLo,1				;takes 2 clock cycles
+000060 f7f1                      	brne		delay									;takes 2  clock cycles
+000061 9508                      	ret													;takes 4 clock cycles
                                  	;in total takes 4+(2+2)+4*delay = 4*delay+8 clock cycles
                                  .include	"motor_controller.asm"
                                  
                                  step_rotate_anticlockwise:
                                  	; sequence for the motor driver to rotate the motor anticlockwise
-00006a e001                      	ldi		ctrl, 0b00000001
-00006b b905                      	out		PORTB, ctrl
-00006c dff0                      	rcall	pause
+000062 e001                      	ldi		ctrl, 0b00000001
+000063 b905                      	out		PORTB, ctrl
+000064 dff0                      	rcall	pause
                                  
-00006d e002                      	ldi		ctrl, 0b00000010
-00006e b905                      	out		PORTB, ctrl
-00006f dfed                      	rcall	pause
+000065 e002                      	ldi		ctrl, 0b00000010
+000066 b905                      	out		PORTB, ctrl
+000067 dfed                      	rcall	pause
                                  
-000070 e004                      	ldi		ctrl, 0b00000100
-000071 b905                      	out		PORTB, ctrl
-000072 dfea                      	rcall	pause
+000068 e004                      	ldi		ctrl, 0b00000100
+000069 b905                      	out		PORTB, ctrl
+00006a dfea                      	rcall	pause
                                  
-000073 e008                      	ldi		ctrl, 0b00001000
-000074 b905                      	out		PORTB, ctrl
-000075 dfe7                      	rcall	pause
+00006b e008                      	ldi		ctrl, 0b00001000
+00006c b905                      	out		PORTB, ctrl
+00006d dfe7                      	rcall	pause
                                  
-000076 cfac                      	rjmp	main_loop
+00006e cfb4                      	rjmp	main_loop
                                  
                                  
                                  
                                  step_rotate_clockwise:
                                  	; sequence for the motor driver to rotate the motor clockwise
-000077 e008                      	ldi		ctrl, 0b00001000
-000078 b905                      	out		PORTB, ctrl
-000079 dfe3                      	rcall	pause
+00006f e008                      	ldi		ctrl, 0b00001000
+000070 b905                      	out		PORTB, ctrl
+000071 dfe3                      	rcall	pause
                                  
-00007a e004                      	ldi		ctrl, 0b00000100
-00007b b905                      	out		PORTB, ctrl
-00007c dfe0                      	rcall	pause
+000072 e004                      	ldi		ctrl, 0b00000100
+000073 b905                      	out		PORTB, ctrl
+000074 dfe0                      	rcall	pause
                                  
-00007d e002                      	ldi		ctrl, 0b00000010
-00007e b905                      	out		PORTB, ctrl
-00007f dfdd                      	rcall	pause
+000075 e002                      	ldi		ctrl, 0b00000010
+000076 b905                      	out		PORTB, ctrl
+000077 dfdd                      	rcall	pause
                                  
-000080 e001                      	ldi		ctrl, 0b00000001
-000081 b905                      	out		PORTB, ctrl
-000082 dfda                      	rcall	pause
+000078 e001                      	ldi		ctrl, 0b00000001
+000079 b905                      	out		PORTB, ctrl
+00007a dfda                      	rcall	pause
                                  
-000083 cf9f                      	rjmp	main_loop
+00007b cfa7                      	rjmp	main_loop
                                  
                                  setzero_pos:
                                  	; zero position this is not working
-000084 e000                      	ldi		ctrl,0b00000000
-000085 b905                      	out		PORTB, ctrl
-000086 cf9c                      	rjmp	main_loop
+00007c e000                      	ldi		ctrl,0b00000000
+00007d b905                      	out		PORTB, ctrl
+00007e cfa4                      	rjmp	main_loop
+                                 .include	"output_controller.asm"
+                                 
+                                 indicator:
+                                 ;	lsr		crosscounterH							; right shift the counter (divide by two) as there are two counts per cycle
+                                 ;	ror		crosscounterL							; rotate right through carry
+                                 
+                                 ;	shifting is not nescessary
+                                 
+00007f ef30                      	ldi		freq_lowerbound, 0xF0					; checking for frequncy of 240
+000080 e040                      	ldi		freq_upperbound, 0x00
+                                 
+000081 1773                      	cp		crosscounterL, freq_lowerbound			; compare low bytes
+000082 0764                      	cpc		crosscounterH, freq_upperbound			; compare higher bytes with carry from above
+                                 
+000083 f038                      	brlo	freq_less_than_240						; branch if frequency less than 240
+                                 
+000084 e034                      	ldi		freq_lowerbound, 0x04					; check for frequnecy of 260
+000085 e041                      	ldi		freq_upperbound, 0x01
+                                 
+000086 1773                      	cp		crosscounterL, freq_lowerbound			; compare low bytes
+000087 0764                      	cpc		crosscounterH, freq_upperbound			; compare higher bytes
+                                 
+000088 f020                      	brlo	freq_is_ok								; branch if frequncy is okay
+                                 
+000089 dfc7                      	rcall	high_led_on								; call high led if the frequnecy is greater than 260
+                                 
+00008a 9508                      	ret
+                                 
+                                 
+                                 freq_less_than_240:
+00008b dfbd                      	rcall	low_led_on
+00008c 9508                      	ret
+                                 
+                                 freq_is_ok:
+00008d dfbf                      	rcall	ok_led_on
+00008e 9508                      	ret
 
 
 RESOURCE USE INFORMATION
@@ -1279,37 +1319,37 @@ counted separately from r26..r31 here.
 "ATmega328P" register use summary:
 x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:  48 r17:   2 r18:   2 r19:   0 r20:   0 
-r21:   3 r22:   4 r23:   4 r24:   2 r25:   2 r26:   0 r27:   0 r28:   0 
+r13:   0 r14:   0 r15:   0 r16:  41 r17:   2 r18:   2 r19:   4 r20:   4 
+r21:   3 r22:   5 r23:   5 r24:   2 r25:   2 r26:   0 r27:   0 r28:   0 
 r29:   0 r30:   0 r31:   0 
-Registers used: 8 out of 35 (22.9%)
+Registers used: 10 out of 35 (28.6%)
 
 "ATmega328P" instruction use summary:
 .lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   0 and   :   1 
 andi  :   0 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
 brcc  :   0 brcs  :   0 break :   0 breq  :   0 brge  :   0 brhc  :   0 
-brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
+brhs  :   0 brid  :   0 brie  :   0 brlo  :   2 brlt  :   0 brmi  :   0 
 brne  :   3 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
 brvs  :   0 bset  :   0 bst   :   0 call  :   1 cbi   :   6 cbr   :   0 
 clc   :   0 clh   :   0 cli   :   1 cln   :   0 clr   :   2 cls   :   0 
-clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
+clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   2 cpc   :   2 
 cpi   :   0 cpse  :   0 dec   :   1 eor   :   0 fmul  :   0 fmuls :   0 
-fmulsu:   0 icall :   0 ijmp  :   0 in    :   3 inc   :   2 jmp   :   3 
-ld    :   0 ldd   :   0 ldi   :  25 lds   :   2 lpm   :   0 lsl   :   0 
-lsr   :   1 mov   :   0 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
-neg   :   0 nop   :   0 or    :   0 ori   :   4 out   :  14 pop   :   0 
-push  :   0 rcall :   9 ret   :   6 reti  :   3 rjmp  :  12 rol   :   0 
+fmulsu:   0 icall :   0 ijmp  :   0 in    :   1 inc   :   2 jmp   :   3 
+ld    :   0 ldd   :   0 ldi   :  27 lds   :   2 lpm   :   0 lsl   :   0 
+lsr   :   0 mov   :   0 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
+neg   :   0 nop   :   0 or    :   0 ori   :   2 out   :  12 pop   :   0 
+push  :   0 rcall :  13 ret   :   9 reti  :   3 rjmp  :  12 rol   :   0 
 ror   :   0 sbc   :   0 sbci  :   0 sbi   :   3 sbic  :   0 sbis  :   0 
 sbiw  :   1 sbr   :   0 sbrc  :   3 sbrs  :   1 sec   :   0 seh   :   0 
 sei   :   2 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
 sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   5 
 sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   2 
-Instructions used: 26 out of 113 (23.0%)
+Instructions used: 28 out of 113 (24.8%)
 
 "ATmega328P" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x00010e    254      0    254   32768   0.8%
+[.cseg] 0x000000 0x00011e    270      0    270   32768   0.8%
 [.dseg] 0x000100 0x000100      0      0      0    2048   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 
