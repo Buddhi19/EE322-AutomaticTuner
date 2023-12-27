@@ -5,7 +5,6 @@ Project Automatic Tuner: Implementing an Automatic Tuner for the EE322 mini-proj
 | Athulya Ratnayake | Thimira Hirushan | Buddhi Wijenayake |
 |---|---|---|
 | | | Audio Processing |
-| | | Watchdog Timer |
 
 # Planned
 | Tasks | Assignees|
@@ -24,6 +23,7 @@ Project Automatic Tuner: Implementing an Automatic Tuner for the EE322 mini-proj
 | Motor Control |
 | Button Handling |
 | Low Pass filter with amplifier |
+| Watchdog Timer |
 
 # Proteus ICs Used
 
