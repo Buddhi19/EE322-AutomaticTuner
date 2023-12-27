@@ -22,14 +22,17 @@ indicator:
 	brlo	freq_is_ok								; branch if frequncy is okay
 
 	rcall	high_led_on								; call high led if the frequnecy is greater than 260
+	ldi		freq_map, 0x04
 
 	ret
 
 
 freq_less_than_240:
 	rcall	low_led_on
+	ldi		freq_map, 0x01		
 	ret
 
 freq_is_ok:
 	rcall	ok_led_on
+	ldi		freq_map, 0x02
 	ret

@@ -17,6 +17,12 @@
 	.def	delayr  = r17							; define delay counter register
 
 	.def	onesecpassed = r21						; check one second passed
+
+	.def	freq_map = r18							; controls motor in automatic mode 
+	; 0th bit -> LOW
+	; 1st bit -> OK
+	; 2nd bit -> HIGH
+
 	.def	crosscounterL = r23						; low register for count the number of times the signal passed 3.3V
 	.def	crosscounterH = r22						; high register for crosscounter
 
@@ -67,17 +73,24 @@ main_loop:
 	rjmp	auto
 
 manual:												; controlling manual controlling
-	ldi		r18, (1<<PB4) | (1<<PB5) | (1<<PB6)		; ignore ports controlling the motor driver
-	and		ctrl, r18
 	sbrc	ctrl, 4									; skip if clockwise button is not pressed
-	rjmp	step_rotate_clockwise
+	rcall	step_rotate_clockwise
 	sbrc	ctrl, 5									; skip if anticlockwise button is not pressed
-	rjmp	step_rotate_anticlockwise
-	rjmp	setzero_pos								; if non of them is pressed set all ports to 0
+	rcall	step_rotate_anticlockwise
+	rcall	setzero_pos								; if non of them is pressed set all ports to 0
 	rjmp	main_loop
 
 
 auto:
+	sbrc	freq_map, 0								; skip if 0th bit is 0
+	rcall	step_rotate_clockwise					; tune up
+	
+	sbrc	freq_map, 1								; skip if 1th bit is 0
+	rcall	setzero_pos								; tuning is stopped
+
+	sbrc	freq_map, 2								; skip if 2nd bit is 0
+	rcall	step_rotate_anticlockwise				; tune down
+
 	rjmp	main_loop
 
 output_handler:

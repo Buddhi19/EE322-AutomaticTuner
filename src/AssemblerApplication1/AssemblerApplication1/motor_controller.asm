@@ -17,8 +17,7 @@ step_rotate_anticlockwise:
 	out		PORTB, ctrl
 	rcall	pause
 
-	rjmp	main_loop
-
+	ret
 
 
 step_rotate_clockwise:
@@ -39,10 +38,10 @@ step_rotate_clockwise:
 	out		PORTB, ctrl
 	rcall	pause
 
-	rjmp	main_loop
+	ret
 
 setzero_pos:
 	; zero position this is not working
-	ldi		ctrl,0b00000000
+	ldi		ctrl,0b00000000						; set all ports to low
 	out		PORTB, ctrl
-	rjmp	main_loop
+	ret

@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm Wed Dec 27 22:29:55 2023
+AVRASM ver. 2.2.8  D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm Wed Dec 27 23:10:21 2023
 
 
 EQU  SIGNATURE_000 0000001e
@@ -702,33 +702,34 @@ EQU  mot_in4      00000003
 DEF  ctrl         r16
 DEF  delayr       r17
 DEF  onesecpassed r21
+DEF  freq_map     r18
 DEF  crosscounterL r23
 DEF  crosscounterH r22
 DEF  freq_lowerbound r19
 DEF  freq_upperbound r20
 CSEG setup        0000000e
-CSEG isr_int1     00000044
-CSEG WDT          00000041
+CSEG isr_int1     00000048
+CSEG WDT          00000045
 CSEG main_loop    00000023
-CSEG output_handler 00000032
+CSEG output_handler 00000036
 CSEG manual       00000029
-CSEG auto         00000031
-CSEG step_rotate_clockwise 0000006f
-CSEG step_rotate_anticlockwise 00000062
-CSEG setzero_pos  0000007c
-CSEG indicator    0000007f
-CSEG no_overflow  00000048
+CSEG auto         0000002f
+CSEG step_rotate_clockwise 00000073
+CSEG step_rotate_anticlockwise 00000066
+CSEG setzero_pos  00000080
+CSEG indicator    00000083
+CSEG no_overflow  0000004c
 EQU  ledhigh      00000000
 EQU  ledlow       00000001
 EQU  ledok        00000002
 EQU  ledP         0000000b
-CSEG low_led_on   00000049
-CSEG ok_led_on    0000004d
-CSEG high_led_on  00000051
+CSEG low_led_on   0000004d
+CSEG ok_led_on    00000051
+CSEG high_led_on  00000055
 DEF  delayLoopHi  r25
 DEF  delayLoopLo  r24
-CSEG pause        00000055
-CSEG delay        0000005f
-CSEG delaylong    00000058
-CSEG freq_less_than_240 0000008b
-CSEG freq_is_ok   0000008d
+CSEG pause        00000059
+CSEG delay        00000063
+CSEG delaylong    0000005c
+CSEG freq_less_than_240 00000090
+CSEG freq_is_ok   00000093
