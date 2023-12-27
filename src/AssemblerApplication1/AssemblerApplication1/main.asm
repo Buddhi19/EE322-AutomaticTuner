@@ -17,7 +17,8 @@
 	.def	delayr  = r17							; define delay counter register
 
 	.def	onesecpassed = r21						; check one second passed
-	.def	crosscounter = r23						; main register for count the number of times the signal passed 3.3V
+	.def	crosscounterL = r23						; low register for count the number of times the signal passed 3.3V
+	.def	crosscounterH = r22						; high register for crosscounter
 
 	.cseg 
 	.org	0x00									; set instruction starting address to 0x00
@@ -33,7 +34,8 @@ setup:
 	ldi		ctrl, (1<<PB0) | (1<<PB1) | (1<<PB2) | (1<<PB3)
 	out		DDRB, ctrl								; set output ports in PORTB
 
-	clr		crosscounter							; initialize the counter
+	clr		crosscounterL							; initialize the counter
+	clr		crosscounterH
 
 	wdr
 	lds		ctrl, WDTCSR
@@ -76,10 +78,13 @@ auto:
 	rjmp	main_loop
 
 output_handler:
-	in		ctrl, PIND
+	in		ctrl, PIND								; Debugger code
 	ori		ctrl, (1<<1)
 	out		PORTD, ctrl
-	ldi		crosscounter, 0x00						; set crosscounter back to 0
+
+	ldi		crosscounterL, 0x00						; set crosscounter back to 0
+	ldi		crosscounterH, 0x00
+
 	ldi		onesecpassed, 0x00						; set onesecpassed back to 0										
 	wdr												; start timed sequence
 	lds		ctrl, WDTCSR
@@ -99,14 +104,24 @@ WDT:												; interrupt handler for watchdog timers
 
 
 isr_int1:
-	ldi		ctrl, 0x01	
-	add		crosscounter, ctrl						; add one to the counter
-
-	in		ctrl, PIND
+	in		ctrl, PIND								; Debugger code 
 	ori		ctrl, (1<<0)
 	out		PORTD, ctrl
 
+	inc		crosscounterL
+	brne	no_overflow
+
+	inc		crosscounterH
+	ldi		crosscounterL, 0x00
+
 	reti
+
+no_overflow:
+	reti
+
+indicator:
+	lsr		crosscounterH							; right shift the counter (divide by two) as there are two counts per cycle
+	ldi		ctrl, 0xAE
 
 .include	"led_controller.asm"
 .include	"delay.asm"
