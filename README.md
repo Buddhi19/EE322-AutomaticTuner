@@ -9,11 +9,12 @@ Project Automatic Tuner: Implementing an Automatic Tuner for the EE322 mini-proj
 # Planned
 | Tasks | Assignees|
 |---|---|
-| Zero Crossing Algorithm | |
 | Full proteus set-up | |
 | Analog Voltage Reading | |
 | Noise Filtering | |
 | Audio Signal not passing zero issue| |
+| P controller | |
+| I2C setup    | |
 
 # DONE
 | Task|
@@ -24,6 +25,8 @@ Project Automatic Tuner: Implementing an Automatic Tuner for the EE322 mini-proj
 | Button Handling |
 | Low Pass filter with amplifier |
 | Watchdog Timer |
+| Zero crossing Algo |
+| Frequency Indication |
 
 # Proteus ICs Used
 
