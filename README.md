@@ -13,7 +13,7 @@ Project Automatic Tuner: Implementing an Automatic Tuner for the EE322 mini-proj
 | Analog Voltage Reading | |
 | Noise Filtering | |
 | Audio Signal not passing zero issue| |
-| P controller | |
+| P controller | Athulya |
 | I2C setup    | |
 
 # DONE
