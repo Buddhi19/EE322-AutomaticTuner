@@ -4,7 +4,7 @@ Project Automatic Tuner: Implementing an Automatic Tuner for the EE322 mini-proj
 # In Progress
 | Athulya Ratnayake | Thimira Hirushan | Buddhi Wijenayake |
 |---|---|---|
-| | | Power Management |
+|P-Controller | | Power Management |
 
 # Planned
 | Tasks | Assignees|
