@@ -36,3 +36,5 @@ freq_is_ok:
 	rcall	ok_led_on
 	ldi		freq_map, 0x02
 	ret
+
+

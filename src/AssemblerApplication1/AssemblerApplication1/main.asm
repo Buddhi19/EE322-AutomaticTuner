@@ -62,6 +62,9 @@ setup:
 
 	sei												; enable global interrupts
 
+	ldi		ctrl, (1<<0)|(1<<2)
+	out		SMCR, ctrl								; enable power off when there's nothing on INT1
+
 
 main_loop:
 	sbrc	onesecpassed,0							; if one second timer passed
