@@ -6,19 +6,21 @@
 
 .include "m328pdef.inc"
 
-.def r30, p_con
-.def r31, comp
+.def p_con = r21
+.def comp = r20
+.def crosscounterH = r22
+.def crosscounterL = r23
 
 .org 0x00
 	jmp start
 
 start:
     sbrs crosscounterH, 0 ;0th bit of crosscounterH is set => value read > 255
-	rjmp low ; jump to low loop
-	rjmp high ; jump to high loop
+	rjmp low_freq ; jump to low loop
+	rjmp high_freq ; jump to high loop
 	rjmp start
 
-low:
+low_freq:
 	ser comp ; se all bits of comp
 	sub comp, crosscounterL ; subtract value read from the desired value
 	breq doneL
@@ -27,10 +29,10 @@ low:
 	lsr p_con ; divide difference by 4, kp=1/4
 	doneL:
 		rjmp start ; kill the loop if equal
-	rjmp low
+	rjmp low_freq
 
 
-high:
+high_freq:
 	clr comp ; clear all bits of comp
 	sub comp, crosscounterL ; subtract value read from the desired value
 	breq doneH
@@ -39,4 +41,4 @@ high:
 	lsr p_con ; divide difference by 4, kp=1/4
 	doneH:
 		rjmp start ; kill the loop if equal
-	rjmp high
+	rjmp high_freq
