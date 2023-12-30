@@ -52,15 +52,15 @@ sleepmode:
 	ldi		ctrl, (1<<0)
 	out		PORTC, ctrl
 
-	ldi		ctrl,(1<<3)								; interrupt call for a Falling edge		
-	sts		EICRA, ctrl								; interrupt call for logical change at INT1
+;	ldi		ctrl,(1<<3)								; interrupt call for a Falling edge		
+;	sts		EICRA, ctrl								; interrupt call for logical change at INT1
 
-	ldi		ctrl, (1<<1)
-	out		EIMSK, ctrl								; enable exteranl interrupt request 1
+;	ldi		ctrl, (1<<1)
+;	out		EIMSK, ctrl								; enable exteranl interrupt request 1
 	
 	rcall	WDT_off
 
-	ldi		ctrl, (1<<0)|(1<<2)
+	ldi		ctrl, (1<<0)
 	out		SMCR, ctrl								; enable sleep mode
 
 	lds		ctrl, MCUCR
