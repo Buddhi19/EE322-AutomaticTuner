@@ -4,15 +4,12 @@ Project Automatic Tuner: Implementing an Automatic Tuner for the EE322 mini-proj
 # In Progress
 | Athulya Ratnayake | Thimira Hirushan | Buddhi Wijenayake |
 |---|---|---|
-|P-Controller | | Power Management |
+|P-Controller | | Adaptive tuning |
 
 # Planned
 | Tasks | Assignees|
 |---|---|
 | Full proteus set-up | |
-| Analog Voltage Reading | |
-| Noise Filtering | |
-| Audio Signal not passing zero issue| |
 | P controller | Athulya |
 | I2C setup    | |
 
@@ -27,6 +24,7 @@ Project Automatic Tuner: Implementing an Automatic Tuner for the EE322 mini-proj
 | Watchdog Timer |
 | Zero crossing Algo |
 | Frequency Indication |
+| Power Management |
 
 # Proteus ICs Used
 
