@@ -37,19 +37,21 @@ indicator:
 
 freq_less_than_240:
 	rcall	low_led_on
-	ldi		freq_map, 0x01							
+	andi	freq_map, (1<<3)|(1<<4)|(1<<5)			; donot change bits in 3,4,5
+	ori		freq_map, 0x01							; need a debugging process
 	ret
 
 freq_is_ok:
 	rcall	ok_led_on
-	ldi		freq_map, 0x02
+	andi	freq_map, (1<<3)|(1<<4)|(1<<5)			; do not change bits in 3,4,5
+	ori		freq_map, 0x02
 	ret
 
 sleepmode:
 	clr		ctrl
-	out		PORTB, ctrl
+	out		PORTB, ctrl								; set all other outputs to low
 	out		PORTD, ctrl
-	ldi		ctrl, (1<<0)
+	ldi		ctrl, (1<<0)							; set power saver indicator high
 	out		PORTC, ctrl
 
 ;	ldi		ctrl,(1<<3)								; interrupt call for a Falling edge		

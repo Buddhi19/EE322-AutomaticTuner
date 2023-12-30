@@ -22,6 +22,8 @@
 	; 0th bit -> LOW
 	; 1st bit -> OK
 	; 2nd bit -> HIGH
+	; 3rd bit -> Adaptive tuning done
+	; 4th bit -> 1 means clockwise turning--> increase frequency, 0 means anticlockwise turning--> increase frequency
 
 	.def	crosscounterL = r23						; low register for count the number of times the signal passed 3.3V
 	.def	crosscounterH = r22						; high register for crosscounter
@@ -97,6 +99,18 @@ auto:
 	rcall	step_rotate_anticlockwise				; tune down
 
 	rjmp	main_loop
+
+tune_up:
+	sbrc	freq_map,4								; if bit 4 is cleared rotate anticlockwise to increase f
+	rcall	step_rotate_clockwise
+	rcall	step_rotate_anticlockwise
+	ret
+
+tune_down:
+	sbrs	freq_map,4								; if bit 4 is set rotate anticlockwise to decrease f
+	rcall	step_rotate_clockwise
+	rcall	step_rotate_anticlockwise
+	ret
 
 output_handler:
 ;	in		ctrl, PIND								; Debugger code
