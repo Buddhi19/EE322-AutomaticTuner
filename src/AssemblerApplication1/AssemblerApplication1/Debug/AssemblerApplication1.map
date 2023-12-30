@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm Thu Dec 28 22:34:50 2023
+AVRASM ver. 2.2.8  D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm Sat Dec 30 17:36:33 2023
 
 
 EQU  SIGNATURE_000 0000001e
@@ -708,28 +708,31 @@ DEF  crosscounterH r22
 DEF  freq_lowerbound r19
 DEF  freq_upperbound r20
 CSEG setup        0000000e
-CSEG isr_int1     0000004a
-CSEG WDT          00000047
+CSEG isr_int1     0000004e
+CSEG WDT          0000004b
 CSEG main_loop    00000025
 CSEG output_handler 00000038
 CSEG manual       0000002b
 CSEG auto         00000031
-CSEG step_rotate_clockwise 00000075
-CSEG step_rotate_anticlockwise 00000068
-CSEG setzero_pos  00000082
-CSEG indicator    00000085
-CSEG no_overflow  0000004e
+CSEG step_rotate_clockwise 00000084
+CSEG step_rotate_anticlockwise 00000077
+CSEG setzero_pos  00000091
+CSEG indicator    00000094
+CSEG WDT_off      00000053
+CSEG no_overflow  00000052
+CSEG WDT_change   0000005d
 EQU  ledhigh      00000000
 EQU  ledlow       00000001
 EQU  ledok        00000002
 EQU  ledP         0000000b
-CSEG low_led_on   0000004f
-CSEG ok_led_on    00000053
-CSEG high_led_on  00000057
+CSEG low_led_on   0000005e
+CSEG ok_led_on    00000062
+CSEG high_led_on  00000066
 DEF  delayLoopHi  r25
 DEF  delayLoopLo  r24
-CSEG pause        0000005b
-CSEG delay        00000065
-CSEG delaylong    0000005e
-CSEG freq_less_than_240 00000092
-CSEG freq_is_ok   00000095
+CSEG pause        0000006a
+CSEG delay        00000074
+CSEG delaylong    0000006d
+CSEG sleepmode    000000ac
+CSEG freq_less_than_240 000000a6
+CSEG freq_is_ok   000000a9

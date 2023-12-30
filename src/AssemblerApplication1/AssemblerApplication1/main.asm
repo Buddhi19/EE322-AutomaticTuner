@@ -43,6 +43,9 @@ setup:
 	ldi		ctrl, (1<<PB0) | (1<<PB1) | (1<<PB2) | (1<<PB3)
 	out		DDRB, ctrl								; set output ports in PORTB
 
+	ldi		ctrl,(1<<PC0)
+	out		DDRC, ctrl								; set-up debugger output for power managemnet
+
 	clr		crosscounterL							; initialize the counter
 	clr		crosscounterH
 
@@ -62,9 +65,6 @@ setup:
 
 	sei												; enable global interrupts
 
-	ldi		ctrl, (1<<0)|(1<<2)
-	out		SMCR, ctrl								; enable power off when there's nothing on INT1
-
 
 main_loop:
 	sbrc	onesecpassed,0							; if one second timer passed
@@ -74,6 +74,8 @@ main_loop:
 	sbrs	ctrl, 6									; check for auto/manual conditions
 	rjmp	manual
 	rjmp	auto
+
+
 
 manual:												; controlling manual controlling
 	sbrc	ctrl, 4									; skip if clockwise button is not pressed
@@ -107,8 +109,13 @@ output_handler:
 	ldi		crosscounterH, 0x00
 
 	ldi		onesecpassed, 0x00						; set onesecpassed back to 0	
-										
-	wdr												; start timed sequence
+					
+	lds		ctrl, WDTCSR
+	sbrc	ctrl, 6									; skip if WDT is already cleared					
+	rcall	WDT_off
+
+	wdr
+
 	lds		ctrl, WDTCSR
 	ori		ctrl ,(1<<WDE)|(1<<WDCE)				; enable watchdog interrupts
 	sts		WDTCSR, ctrl
@@ -139,6 +146,18 @@ isr_int1:
 
 no_overflow:
 	reti											; close the interrupt routine at no overflow
+
+WDT_off:
+	wdr												; start timed sequence
+	lds		r16, WDTCSR
+	ori		r16, (1<<WDCE) | (1<<WDE)	
+	sts		WDTCSR, r16
+	ldi		r16, 0x00								; disbale Watchdog to enable after
+	sts		WDTCSR, r16
+	ret
+
+WDT_change:
+	ret
 
 
 .include	"led_controller.asm"
