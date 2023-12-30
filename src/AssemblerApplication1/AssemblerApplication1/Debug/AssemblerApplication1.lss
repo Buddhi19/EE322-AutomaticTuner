@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm Sat Dec 30 18:15:21 2023
+AVRASM ver. 2.2.8  D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm Sat Dec 30 18:27:37 2023
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
 D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(9): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328pdef.inc'
@@ -1322,7 +1322,7 @@ D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1
                                  
 00009d f040                      	brlo	freq_less_than_240						; branch if frequency less than 240
                                  
-00009e e034                      	ldi		freq_lowerbound, 0x04					; check for frequnecy of 260
+00009e e138                      	ldi		freq_lowerbound, 0x18					; check for frequnecy of 280
 00009f e041                      	ldi		freq_upperbound, 0x01
                                  
 0000a0 1773                      	cp		crosscounterL, freq_lowerbound			; compare low bytes

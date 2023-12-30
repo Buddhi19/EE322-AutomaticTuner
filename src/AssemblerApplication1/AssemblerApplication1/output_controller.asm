@@ -21,7 +21,7 @@ indicator:
 
 	brlo	freq_less_than_240						; branch if frequency less than 240
 
-	ldi		freq_lowerbound, 0x04					; check for frequnecy of 260
+	ldi		freq_lowerbound, 0x18					; check for frequnecy of 280
 	ldi		freq_upperbound, 0x01
 
 	cp		crosscounterL, freq_lowerbound			; compare low bytes
