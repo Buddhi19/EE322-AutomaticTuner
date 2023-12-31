@@ -17,13 +17,18 @@
 	.def	delayr  = r17							; define delay counter register
 
 	.def	onesecpassed = r21						; check one second passed
+	; 0th bit -> onesec passed
+	; 1st bit -> 0 means manual mode, 1 means auto
 
 	.def	freq_map = r18							; controls motor in automatic mode 
 	; 0th bit -> LOW
 	; 1st bit -> OK
 	; 2nd bit -> HIGH
-	; 3rd bit -> Adaptive tuning done
-	; 4th bit -> 1 means clockwise turning--> increase frequency, 0 means anticlockwise turning--> increase frequency
+
+	;  r30
+	; 0th bit -> Adaptive tuning on going
+	; 1st bit -> 1 means Adaptive tuning done
+	; 2nd bit -> 1 means clockwise turning--> increase frequency, 0 means anticlockwise turning--> increase frequency
 
 	.def	crosscounterL = r23						; low register for count the number of times the signal passed 3.3V
 	.def	crosscounterH = r22						; high register for crosscounter
@@ -73,8 +78,13 @@ main_loop:
 	rjmp	output_handler							; somethings there in the output
 	; controls main loop depending on auto/manual conditions
 	in		ctrl, PINB								; take PINB states
+
+	andi	onesecpassed, (1<<0)					; put auto/manual state in the register
+
 	sbrs	ctrl, 6									; check for auto/manual conditions
 	rjmp	manual
+	
+	ori		onesecpassed, (1<<1)
 	rjmp	auto
 
 
@@ -90,55 +100,93 @@ manual:												; controlling manual controlling
 
 auto:
 	sbrc	freq_map, 0								; skip if 0th bit is 0
-	rcall	step_rotate_clockwise					; tune up
+	rjmp	tune_up									; tune up
 	
 	sbrc	freq_map, 1								; skip if 1th bit is 0
 	rcall	setzero_pos								; tuning is stopped
 
 	sbrc	freq_map, 2								; skip if 2nd bit is 0
-	rcall	step_rotate_anticlockwise				; tune down
+	rcall	tune_down								; tune down
 
 	rjmp	main_loop
 
 tune_up:
-	sbrc	freq_map,4								; if bit 4 is cleared rotate anticlockwise to increase f
+	sbrs	r30, 1
+	rjmp	not_calibrated
+
+	sbrc	r30, 2									; if bit 4 is cleared rotate anticlockwise to increase f
 	rcall	step_rotate_clockwise
 	rcall	step_rotate_anticlockwise
-	ret
+	rjmp	main_loop
 
 tune_down:
-	sbrs	freq_map,4								; if bit 4 is set rotate anticlockwise to decrease f
+	sbrs	r30, 1
+	rjmp	not_calibrated
+
+	sbrs	r30, 2									; if bit 4 is set rotate anticlockwise to decrease f
 	rcall	step_rotate_clockwise
 	rcall	step_rotate_anticlockwise
 	ret
 
+not_calibrated:
+	rcall	step_rotate_clockwise
+	rjmp	main_loop
+
 output_handler:
-;	in		ctrl, PIND								; Debugger code
-;	ori		ctrl, (1<<1)
-	;out		PORTD, ctrl
-	
 	rcall	indicator
+
+	sbrc	onesecpassed, 1							; if auto mode, check for the initialization
+	rcall	init
 
 	ldi		crosscounterL, 0x00						; set crosscounter back to 0
 	ldi		crosscounterH, 0x00
 
-	ldi		onesecpassed, 0x00						; set onesecpassed back to 0	
+	ser		ctrl									; set ctrl 1111 1110
+	dec		ctrl
+	and		onesecpassed, ctrl						; set onesecpassed back to 0	
 					
 	lds		ctrl, WDTCSR
 	sbrc	ctrl, 6									; skip if WDT is already cleared					
 	rcall	WDT_off
 
 	wdr
-
 	lds		ctrl, WDTCSR
 	ori		ctrl ,(1<<WDE)|(1<<WDCE)				; enable watchdog interrupts
 	sts		WDTCSR, ctrl
-
 	ldi		ctrl, (1<<WDIE) | (1<<WDP2) | (1<<WDP1)	; set watchdog timer for one second
 	sts		WDTCSR, ctrl
 
 	sei												; enable global interrupts
+
 	rjmp	main_loop
+
+init:
+	sbrs	r30, 1								; if initialization is done skip
+	rcall	initializer
+	ret
+
+initializer:
+	sbrs	r30, 0								; if adaptive initialization is in process skip
+	rjmp	store_current
+
+	cp		crosscounterL, r28
+	cpc		crosscounterH, r29
+
+	brlo	freq_decreased
+	ori		r30, (1<<1)|(1<<2)
+	ret
+
+freq_decreased:
+	andi	r30,(0<<2)
+	ori		r30,(1<<1)
+	ret
+
+store_current:
+	mov		r28, crosscounterL
+	mov		r29, crosscounterH
+
+	ori		freq_map, (1<<3)
+	ret
 
 WDT:												; interrupt handler for watchdog timers
 	cli												; disable interrupts
@@ -147,10 +195,6 @@ WDT:												; interrupt handler for watchdog timers
 
 
 isr_int1:
-;	in		ctrl, PIND								; Debugger code 
-;	ori		ctrl, (1<<0)
-;	out		PORTD, ctrl
-
 	inc		crosscounterL							; increment the lower register
 	brne	no_overflow								; branch if no overflow i.e (0x00)
 
@@ -169,11 +213,7 @@ WDT_off:
 	ldi		r16, 0x00								; disbale Watchdog to enable after
 	sts		WDTCSR, r16
 	ret
-
-WDT_change:
-	ret
-
-
+	
 .include	"led_controller.asm"
 .include	"delay.asm"
 .include	"motor_controller.asm"

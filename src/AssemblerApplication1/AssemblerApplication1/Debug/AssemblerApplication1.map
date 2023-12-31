@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm Sat Dec 30 20:46:19 2023
+AVRASM ver. 2.2.8  D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm Sun Dec 31 12:17:51 2023
 
 
 EQU  SIGNATURE_000 0000001e
@@ -708,33 +708,37 @@ DEF  crosscounterH r22
 DEF  freq_lowerbound r19
 DEF  freq_upperbound r20
 CSEG setup        0000000e
-CSEG isr_int1     00000056
-CSEG WDT          00000053
+CSEG isr_int1     00000073
+CSEG WDT          00000070
 CSEG main_loop    00000025
-CSEG output_handler 00000040
-CSEG manual       0000002b
-CSEG auto         00000031
-CSEG step_rotate_clockwise 0000008c
-CSEG step_rotate_anticlockwise 0000007f
-CSEG setzero_pos  00000099
-CSEG tune_up      00000038
-CSEG tune_down    0000003c
-CSEG indicator    0000009c
-CSEG WDT_off      0000005b
-CSEG no_overflow  0000005a
-CSEG WDT_change   00000065
+CSEG output_handler 00000048
+CSEG manual       0000002d
+CSEG auto         00000033
+CSEG step_rotate_clockwise 000000a8
+CSEG step_rotate_anticlockwise 0000009b
+CSEG setzero_pos  000000b5
+CSEG tune_up      0000003a
+CSEG tune_down    00000040
+CSEG not_calibrated 00000046
+CSEG indicator    000000b8
+CSEG init         0000005f
+CSEG WDT_off      00000078
+CSEG initializer  00000062
+CSEG store_current 0000006c
+CSEG freq_decreased 00000069
+CSEG no_overflow  00000077
 EQU  ledhigh      00000000
 EQU  ledlow       00000001
 EQU  ledok        00000002
 EQU  ledP         0000000b
-CSEG low_led_on   00000066
-CSEG ok_led_on    0000006a
-CSEG high_led_on  0000006e
+CSEG low_led_on   00000082
+CSEG ok_led_on    00000086
+CSEG high_led_on  0000008a
 DEF  delayLoopHi  r25
 DEF  delayLoopLo  r24
-CSEG pause        00000072
-CSEG delay        0000007c
-CSEG delaylong    00000075
-CSEG sleepmode    000000b6
-CSEG freq_less_than_240 000000ae
-CSEG freq_is_ok   000000b2
+CSEG pause        0000008e
+CSEG delay        00000098
+CSEG delaylong    00000091
+CSEG sleep_mode   000000d3
+CSEG freq_less_than_240 000000cb
+CSEG freq_is_ok   000000cf
