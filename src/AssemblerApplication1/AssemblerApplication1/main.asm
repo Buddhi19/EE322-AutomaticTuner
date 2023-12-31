@@ -159,31 +159,31 @@ output_handler:
 	rjmp	main_loop
 
 init:
-	sbrs	r30, 1								; if initialization is done skip
+	sbrs	r30, 1									; if initialization is done skip
 	rcall	initializer
 	ret
 
 initializer:
-	sbrs	r30, 0								; if adaptive initialization is in process skip
+	sbrs	r30, 0									; if adaptive initialization is in process skip
 	rjmp	store_current
 
 	cp		crosscounterL, r28
 	cpc		crosscounterH, r29
 
 	brlo	freq_decreased
-	ori		r30, (1<<1)|(1<<2)					; frequency is increased when rotated in clockwise
+	ori		r30, (1<<1)|(1<<2)						; frequency is increased when rotated in clockwise
 	ret
 
 freq_decreased:
-	andi	r30,(0<<2)
+	andi	r30,(0<<2)								; frequency is decresed when rotated clockwise
 	ori		r30,(1<<1)
 	ret
 
 store_current:
-	mov		r28, crosscounterL
+	mov		r28, crosscounterL						; store the initial frequency to compare
 	mov		r29, crosscounterH
 
-	ori		r30, (1<<0)
+	ori		r30, (1<<0)						
 	ret
 
 WDT:												; interrupt handler for watchdog timers
@@ -216,3 +216,4 @@ WDT_off:
 .include	"delay.asm"
 .include	"motor_controller.asm"
 .include	"output_controller.asm"
+.include	"power_controller.asm"
