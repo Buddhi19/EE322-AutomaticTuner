@@ -4,7 +4,7 @@ Project Automatic Tuner: Implementing an Automatic Tuner for the EE322 mini-proj
 # In Progress
 | Athulya Ratnayake | Thimira Hirushan | Buddhi Wijenayake |
 |---|---|---|
-|P-Controller | | Adaptive tuning |
+|P-Controller | | |
 
 # Planned
 | Tasks | Assignees|
@@ -25,6 +25,7 @@ Project Automatic Tuner: Implementing an Automatic Tuner for the EE322 mini-proj
 | Zero crossing Algo |
 | Frequency Indication |
 | Power Management |
+| Adaptive Tuning |
 
 # Proteus ICs Used
 
