@@ -112,23 +112,23 @@ auto:
 
 tune_up:
 	sbrs	r30, 1
-	rjmp	not_calibrated
+	rjmp	clockwise
 
-	sbrc	r30, 2									; if bit 4 is cleared rotate anticlockwise to increase f
-	rcall	step_rotate_clockwise
+	sbrc	r30, 2									; if bit 1 is cleared rotate anticlockwise to increase f
+	rjmp	clockwise
 	rcall	step_rotate_anticlockwise
 	rjmp	main_loop
 
 tune_down:
 	sbrs	r30, 1
-	rjmp	not_calibrated
+	rjmp	clockwise
 
-	sbrs	r30, 2									; if bit 4 is set rotate anticlockwise to decrease f
-	rcall	step_rotate_clockwise
+	sbrs	r30, 2									; if bit 1 is set rotate anticlockwise to decrease f
+	rjmp	clockwise
 	rcall	step_rotate_anticlockwise
 	ret
 
-not_calibrated:
+clockwise:
 	rcall	step_rotate_clockwise
 	rjmp	main_loop
 
@@ -141,9 +141,7 @@ output_handler:
 	ldi		crosscounterL, 0x00						; set crosscounter back to 0
 	ldi		crosscounterH, 0x00
 
-	ser		ctrl									; set ctrl 1111 1110
-	dec		ctrl
-	and		onesecpassed, ctrl						; set onesecpassed back to 0	
+	andi	onesecpassed, (1<<1)					; set onesecpassed back to 0	
 					
 	lds		ctrl, WDTCSR
 	sbrc	ctrl, 6									; skip if WDT is already cleared					
@@ -173,7 +171,7 @@ initializer:
 	cpc		crosscounterH, r29
 
 	brlo	freq_decreased
-	ori		r30, (1<<1)|(1<<2)
+	ori		r30, (1<<1)|(1<<2)					; frequency is increased when rotated in clockwise
 	ret
 
 freq_decreased:
@@ -185,12 +183,12 @@ store_current:
 	mov		r28, crosscounterL
 	mov		r29, crosscounterH
 
-	ori		freq_map, (1<<3)
+	ori		r30, (1<<0)
 	ret
 
 WDT:												; interrupt handler for watchdog timers
 	cli												; disable interrupts
-	ldi		onesecpassed, 0x01
+	ori		onesecpassed, (1<<0)
 	reti
 
 
