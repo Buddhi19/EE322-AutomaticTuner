@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm Sun Dec 31 19:50:54 2023
+AVRASM ver. 2.2.8  D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm Mon Jan 01 20:01:18 2024
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
 D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(9): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328pdef.inc'
@@ -1200,31 +1200,31 @@ D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1
 00005c cfc8                      	rjmp	main_loop
                                  
                                  init:
-00005d ffe1                      	sbrs	r30, 1								; if initialization is done skip
+00005d ffe1                      	sbrs	r30, 1									; if initialization is done skip
 00005e d001                      	rcall	initializer
 00005f 9508                      	ret
                                  
                                  initializer:
-000060 ffe0                      	sbrs	r30, 0								; if adaptive initialization is in process skip
+000060 ffe0                      	sbrs	r30, 0									; if adaptive initialization is in process skip
 000061 c008                      	rjmp	store_current
                                  
 000062 177c                      	cp		crosscounterL, r28
 000063 076d                      	cpc		crosscounterH, r29
                                  
 000064 f010                      	brlo	freq_decreased
-000065 60e6                      	ori		r30, (1<<1)|(1<<2)					; frequency is increased when rotated in clockwise
+000065 60e6                      	ori		r30, (1<<1)|(1<<2)						; frequency is increased when rotated in clockwise
 000066 9508                      	ret
                                  
                                  freq_decreased:
-000067 70e0                      	andi	r30,(0<<2)
+000067 70e0                      	andi	r30,(0<<2)								; frequency is decresed when rotated clockwise
 000068 60e2                      	ori		r30,(1<<1)
 000069 9508                      	ret
                                  
                                  store_current:
-00006a 2fc7                      	mov		r28, crosscounterL
+00006a 2fc7                      	mov		r28, crosscounterL						; store the initial frequency to compare
 00006b 2fd6                      	mov		r29, crosscounterH
                                  
-00006c 60e1                      	ori		r30, (1<<0)
+00006c 60e1                      	ori		r30, (1<<0)						
 00006d 9508                      	ret
                                  
                                  WDT:												; interrupt handler for watchdog timers
