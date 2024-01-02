@@ -2,6 +2,7 @@
 sleep_mode:
 	clr		ctrl
 	out		PORTB, ctrl								; set all other outputs to low
+	out		PORTC, ctrl
 	ldi		ctrl, (1<<PD5)
 	out		PORTD, ctrl
 	;ldi		ctrl, (1<<0)							; set power saver indicator high

@@ -5,23 +5,18 @@ indicator:
 
 ;	shifting is not nescessary
 
-	ldi		freq_lowerbound, 0x32					; checking for frequncy of 50
-	ldi		freq_upperbound, 0x00
-
-	cp		crosscounterL, freq_lowerbound			; compare low bytes
-	cpc		crosscounterH, freq_upperbound			; compare higher bytes
-
-	brlo	sleep_mode
-
-	ldi		freq_lowerbound, 0xF0					; checking for frequncy of 240
-	ldi		freq_upperbound, 0x00
-
 	cp		crosscounterL, freq_lowerbound			; compare low bytes
 	cpc		crosscounterH, freq_upperbound			; compare higher bytes with carry from above
 
-	brlo	freq_less_than_240						; branch if frequency less than 240
+	brlo	freq_less_than_low						; branch if frequency less than 240
 
-	ldi		freq_lowerbound, 0x18					; check for frequnecy of 280
+	ldi		ctrl, 0x19
+	ldi		r17, 0x00
+
+	add		freq_lowerbound, ctrl
+	adc		freq_upperbound, r17
+
+	ldi		freq_lowerbound, 0x18					; check for frequnecy of Upper Frequency
 	ldi		freq_upperbound, 0x01
 
 	cp		crosscounterL, freq_lowerbound			; compare low bytes
@@ -36,7 +31,7 @@ indicator:
 	ret
 
 
-freq_less_than_240:
+freq_less_than_low:
 	rcall	low_led_on
 	andi	freq_map, (1<<3)|(1<<4)|(1<<5)			; donot change bits in 3,4,5
 	ori		freq_map, (1<<0)						; need a debugging process

@@ -1,20 +1,24 @@
 
-AVRASM ver. 2.2.8  D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm Tue Jan 02 11:29:00 2024
+AVRASM ver. 2.2.8  D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm Tue Jan 02 23:29:55 2024
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
 D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(9): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328pdef.inc'
-D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(215): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\led_controller.asm'
-D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(216): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\delay.asm'
-D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(217): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\motor_controller.asm'
-D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(218): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\output_controller.asm'
-D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(219): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\power_controller.asm'
+D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(222): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\led_controller.asm'
+D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(223): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\delay.asm'
+D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(224): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\motor_controller.asm'
+D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(225): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\output_controller.asm'
+D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(226): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\power_controller.asm'
+D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(227): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\display_controller.asm'
+D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(228): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\super_controller.asm'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
 D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(9): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328pdef.inc'
-D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(215): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\led_controller.asm'
-D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(216): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\delay.asm'
-D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(217): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\motor_controller.asm'
-D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(218): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\output_controller.asm'
-D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(219): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\power_controller.asm'
+D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(222): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\led_controller.asm'
+D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(223): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\delay.asm'
+D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(224): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\motor_controller.asm'
+D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(225): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\output_controller.asm'
+D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(226): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\power_controller.asm'
+D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(227): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\display_controller.asm'
+D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(228): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\super_controller.asm'
                                  
                                  ;
                                  
@@ -1071,6 +1075,12 @@ D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1
                                  	; 1st bit -> 1 means Adaptive tuning done
                                  	; 2nd bit -> 1 means clockwise turning--> increase frequency, 0 means anticlockwise turning--> increase frequency
                                  
+                                 	;r31
+                                 	; stores current frequency
+                                 	; 0 th bit = 1 for A
+                                 	; 1 st bit = 1 for C
+                                 	; 2 nd bit = 1 for E
+                                 
                                  	.def	crosscounterL = r23						; low register for count the number of times the signal passed 3.3V
                                  	.def	crosscounterH = r22						; high register for crosscounter
                                  
@@ -1091,8 +1101,9 @@ D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1
 000010 e00f                      	ldi		ctrl, (1<<PB0) | (1<<PB1) | (1<<PB2) | (1<<PB3)
 000011 b904                      	out		DDRB, ctrl								; set output ports in PORTB
                                  
-000012 e001                      	ldi		ctrl,(1<<PC0)
-000013 b907                      	out		DDRC, ctrl								; set-up debugger output for power managemnet --- PD5
+000012 e00f                      	ldi		ctrl,(1<<PC0)|(1<<PC1)|(1<<PC2)|(1<<PC3)
+000013 b907                      	out		DDRC, ctrl								; set-up seven segment display
+                                 	;out		PORTC, ctrl
                                  
 000014 2777                      	clr		crosscounterL							; initialize the counter
 000015 2766                      	clr		crosscounterH
@@ -1174,7 +1185,7 @@ D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1
 000047 cfdd                      	rjmp	main_loop
                                  
                                  output_handler:
-000048 d06d                      	rcall	indicator
+000048 d0bd                      	rcall	super_indicator
                                  
 000049 fd51                      	sbrc	onesecpassed, 1							; if auto mode, check for the initialization
 00004a d012                      	rcall	init
@@ -1360,57 +1371,53 @@ D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1
                                  
                                  ;	shifting is not nescessary
                                  
-0000b6 e332                      	ldi		freq_lowerbound, 0x32					; checking for frequncy of 50
-0000b7 e040                      	ldi		freq_upperbound, 0x00
+0000b6 1773                      	cp		crosscounterL, freq_lowerbound			; compare low bytes
+0000b7 0764                      	cpc		crosscounterH, freq_upperbound			; compare higher bytes with carry from above
                                  
-0000b8 1773                      	cp		crosscounterL, freq_lowerbound			; compare low bytes
-0000b9 0764                      	cpc		crosscounterH, freq_upperbound			; compare higher bytes
+0000b8 f068                      	brlo	freq_less_than_low						; branch if frequency less than 240
                                  
-0000ba f0b0                      	brlo	sleep_mode
+0000b9 e109                      	ldi		ctrl, 0x19
+0000ba e010                      	ldi		r17, 0x00
                                  
-0000bb ef30                      	ldi		freq_lowerbound, 0xF0					; checking for frequncy of 240
-0000bc e040                      	ldi		freq_upperbound, 0x00
+0000bb 0f30                      	add		freq_lowerbound, ctrl
+0000bc 1f41                      	adc		freq_upperbound, r17
                                  
-0000bd 1773                      	cp		crosscounterL, freq_lowerbound			; compare low bytes
-0000be 0764                      	cpc		crosscounterH, freq_upperbound			; compare higher bytes with carry from above
+0000bd e138                      	ldi		freq_lowerbound, 0x18					; check for frequnecy of Upper Frequency
+0000be e041                      	ldi		freq_upperbound, 0x01
                                  
-0000bf f048                      	brlo	freq_less_than_240						; branch if frequency less than 240
+0000bf 1773                      	cp		crosscounterL, freq_lowerbound			; compare low bytes
+0000c0 0764                      	cpc		crosscounterH, freq_upperbound			; compare higher bytes
                                  
-0000c0 e138                      	ldi		freq_lowerbound, 0x18					; check for frequnecy of 280
-0000c1 e041                      	ldi		freq_upperbound, 0x01
+0000c1 f040                      	brlo	freq_is_ok								; branch if frequncy is okay
                                  
-0000c2 1773                      	cp		crosscounterL, freq_lowerbound			; compare low bytes
-0000c3 0764                      	cpc		crosscounterH, freq_upperbound			; compare higher bytes
+0000c2 dfc5                      	rcall	high_led_on								; call high led if the frequnecy is greater than 260
+0000c3 7328                      	andi	freq_map,(1<<3)|(1<<4)|(1<<5)
+0000c4 6024                      	ori		freq_map, (1<<2)
                                  
-0000c4 f040                      	brlo	freq_is_ok								; branch if frequncy is okay
-                                 
-0000c5 dfc2                      	rcall	high_led_on								; call high led if the frequnecy is greater than 260
-0000c6 7328                      	andi	freq_map,(1<<3)|(1<<4)|(1<<5)
-0000c7 6024                      	ori		freq_map, (1<<2)
-                                 
-0000c8 9508                      	ret
+0000c5 9508                      	ret
                                  
                                  
-                                 freq_less_than_240:
-0000c9 dfb6                      	rcall	low_led_on
-0000ca 7328                      	andi	freq_map, (1<<3)|(1<<4)|(1<<5)			; donot change bits in 3,4,5
-0000cb 6021                      	ori		freq_map, (1<<0)						; need a debugging process
-0000cc 9508                      	ret
+                                 freq_less_than_low:
+0000c6 dfb9                      	rcall	low_led_on
+0000c7 7328                      	andi	freq_map, (1<<3)|(1<<4)|(1<<5)			; donot change bits in 3,4,5
+0000c8 6021                      	ori		freq_map, (1<<0)						; need a debugging process
+0000c9 9508                      	ret
                                  
                                  freq_is_ok:
-0000cd dfb6                      	rcall	ok_led_on
-0000ce 7328                      	andi	freq_map, (1<<3)|(1<<4)|(1<<5)			; do not change bits in 3,4,5
-0000cf 6022                      	ori		freq_map, (1<<1)
-0000d0 9508                      	ret
+0000ca dfb9                      	rcall	ok_led_on
+0000cb 7328                      	andi	freq_map, (1<<3)|(1<<4)|(1<<5)			; do not change bits in 3,4,5
+0000cc 6022                      	ori		freq_map, (1<<1)
+0000cd 9508                      	ret
                                  
                                  
                                  .include	"power_controller.asm"
                                  
                                  sleep_mode:
-0000d1 2700                      	clr		ctrl
-0000d2 b905                      	out		PORTB, ctrl								; set all other outputs to low
-0000d3 e200                      	ldi		ctrl, (1<<PD5)
-0000d4 b90b                      	out		PORTD, ctrl
+0000ce 2700                      	clr		ctrl
+0000cf b905                      	out		PORTB, ctrl								; set all other outputs to low
+0000d0 b908                      	out		PORTC, ctrl
+0000d1 e200                      	ldi		ctrl, (1<<PD5)
+0000d2 b90b                      	out		PORTD, ctrl
                                  	;ldi		ctrl, (1<<0)							; set power saver indicator high
                                  	;out		PORTC, ctrl
                                  
@@ -1420,31 +1427,182 @@ D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1
                                  ;	ldi		ctrl, (1<<1)
                                  ;	out		EIMSK, ctrl								; enable exteranl interrupt request 1
                                  	
-0000d5 dfa0                      	rcall	WDT_off									; turn off watchdog timer
+0000d3 dfa2                      	rcall	WDT_off									; turn off watchdog timer
                                  
-0000d6 e001                      	ldi		ctrl, (1<<0)
-0000d7 bf03                      	out		SMCR, ctrl								; enable sleep mode
+0000d4 e001                      	ldi		ctrl, (1<<0)
+0000d5 bf03                      	out		SMCR, ctrl								; enable sleep mode
                                  
-0000d8 9100 0035                 	lds		ctrl, MCUCR
-0000da 6600                      	ori		ctrl, (1<<6)|(1<<5)						; set BODS and BODSE
+0000d6 9100 0035                 	lds		ctrl, MCUCR
+0000d8 6600                      	ori		ctrl, (1<<6)|(1<<5)						; set BODS and BODSE
                                  
-0000db bf05                      	out		MCUCR, ctrl
+0000d9 bf05                      	out		MCUCR, ctrl
                                  
-0000dc 7d0f                      	cbr		ctrl, (1<<5)	
-0000dd bf05                      	out		MCUCR, ctrl								; set only BODS bit
+0000da 7d0f                      	cbr		ctrl, (1<<5)	
+0000db bf05                      	out		MCUCR, ctrl								; set only BODS bit
                                  
-0000de 9478                      	sei
+0000dc 9478                      	sei
                                  
-0000df 9588                      	sleep											; sleep mode enabled
+0000dd 9588                      	sleep											; sleep mode enabled
                                  
-0000e0 94f8                      	cli												; wake up at external interrupt
+0000de 94f8                      	cli												; wake up at external interrupt
                                  
-0000e1 2700                      	clr		ctrl									; switch off power save button
-0000e2 b90b                      	out		PORTD, ctrl
+0000df 2700                      	clr		ctrl									; switch off power save button
+0000e0 b90b                      	out		PORTD, ctrl
                                  
-0000e3 bf03                      	out		SMCR, ctrl								; clear sleep bit
+0000e1 bf03                      	out		SMCR, ctrl								; clear sleep bit
                                  
-0000e4 9508                      	ret
+0000e2 9508                      	ret
+                                 .include	"display_controller.asm"
+                                 
+                                 indicate_F:
+0000e3 e00f                      	ldi		ctrl, 0b00001111						; corresponding value to represent E
+0000e4 d01f                      	rcall	display_bcd
+0000e5 9508                      	ret
+                                 
+                                 indicate_B:
+0000e6 e001                      	ldi		ctrl, 0b000000001
+0000e7 d01c                      	rcall	display_bcd
+0000e8 9508                      	ret
+                                 
+                                 indicate_D:
+0000e9 e000                      	ldi		ctrl, 0b00000000
+0000ea d019                      	rcall	display_bcd
+0000eb 9508                      	ret
+                                 
+                                 indicate_3:
+0000ec e00c                      	ldi		ctrl, 0b00001100						; corresponding value to represent E
+0000ed d016                      	rcall	display_bcd
+0000ee 9508                      	ret
+                                 
+                                 indicate_5:
+0000ef e00a                      	ldi		ctrl, 0b00001010						; corresponding value to represent E
+0000f0 d013                      	rcall	display_bcd
+0000f1 9508                      	ret
+                                 
+                                 indicate_1:
+0000f2 e008                      	ldi		ctrl, 0b00001000						; corresponding value to represent E
+0000f3 d010                      	rcall	display_bcd
+0000f4 9508                      	ret
+                                 
+                                 indicate_E:
+0000f5 e007                      	ldi		ctrl, 0b00000111						; corresponding value to represent E
+0000f6 d00d                      	rcall	display_bcd
+0000f7 9508                      	ret
+                                 
+                                 indicate_C:
+0000f8 e003                      	ldi		ctrl, 0b00000011						; corresponding value to represent E
+0000f9 d00a                      	rcall	display_bcd
+0000fa 9508                      	ret
+                                 
+                                 indicate_6:
+0000fb e006                      	ldi		ctrl, 0b00000110						; corresponding value to represent E
+0000fc d007                      	rcall	display_bcd
+0000fd 9508                      	ret
+                                 
+                                 indicate_2:
+0000fe e004                      	ldi		ctrl, 0b00000100						; corresponding value to represent E
+0000ff d004                      	rcall	display_bcd
+000100 9508                      	ret
+                                 
+                                 indicate_A:
+000101 e005                      	ldi		ctrl, 0b00000101						; corresponding value to represent E
+000102 d001                      	rcall	display_bcd
+000103 9508                      	ret
+                                 
+                                 display_bcd:
+000104 b908                      	out		PORTC, ctrl
+                                 .include	"super_controller.asm"
+000105 9508                      
+                                 super_indicator:
+000106 e436                      	ldi		freq_lowerbound, 0x46					; checking for frequncy of 50
+000107 e040                      	ldi		freq_upperbound, 0x00
+                                 
+000108 1773                      	cp		crosscounterL, freq_lowerbound			; compare low bytes
+000109 0764                      	cpc		crosscounterH, freq_upperbound			; compare higher bytes
+                                 
+00010a f218                      	brlo	sleep_mode
+                                 
+00010b e936                      	ldi		freq_lowerbound, 0x96					; checking for frequncy of 150
+00010c e040                      	ldi		freq_upperbound, 0x00
+                                 
+00010d 1773                      	cp		crosscounterL, freq_lowerbound			; compare low bytes
+00010e 0764                      	cpc		crosscounterH, freq_upperbound			; compare higher bytes
+                                 
+00010f f060                      	brlo	note_3
+                                 
+000110 e23c                      	ldi		freq_lowerbound, 0x2C					; checking for frequncy of 300
+000111 e041                      	ldi		freq_upperbound, 0x01
+                                 
+000112 1773                      	cp		crosscounterL, freq_lowerbound			; compare low bytes
+000113 0764                      	cpc		crosscounterH, freq_upperbound			; compare higher bytes
+                                 
+000114 f088                      	brlo	note_2
+                                 
+000115 fff2                      	sbrs	r31, 2
+000116 d019                      	rcall	flag_clear_1
+                                 
+000117 dfdd                      	rcall	indicate_E								; frequency of 330
+000118 e430                      	ldi		freq_lowerbound, 0x40					; checking for frequncy of 320
+000119 e041                      	ldi		freq_upperbound, 0x01
+00011a df9b                      	rcall	indicator
+00011b 9508                      	ret
+                                 
+                                 note_3:
+00011c fff0                      	sbrs	r31, 0									; if frequency is changed remap adaptive tuning
+00011d d005                      	rcall	flag_clear_3
+                                 
+00011e dfe2                      	rcall	indicate_A								; frequency of 82
+00011f e53f                      	ldi		freq_lowerbound, 0x5F					; checking for frequncy of 95
+000120 e040                      	ldi		freq_upperbound, 0x00
+000121 df94                      	rcall	indicator
+000122 9508                      	ret
+                                 
+                                 flag_clear_3:
+000123 27ee                      	clr		r30
+000124 e0f1                      	ldi		r31, 0x01
+000125 9508                      	ret
+                                 
+                                 note_2:
+000126 fff1                      	sbrs	r31, 1									; if frequency is changed remap adaptive tuning
+000127 d005                      	rcall	flag_clear_2
+                                 
+000128 dfcf                      	rcall	indicate_C								; frequency of 256
+000129 ef30                      	ldi		freq_lowerbound, 0xF0					; checking for frequncy of 240
+00012a e040                      	ldi		freq_upperbound, 0x00
+00012b df8a                      	rcall	indicator
+00012c 9508                      	ret
+                                 
+                                 flag_clear_2:
+00012d 27ee                      	clr		r30
+00012e e0f2                      	ldi		r31, 0x02
+00012f 9508                      	ret
+                                 
+                                 flag_clear_1:
+000130 27ee                      	clr		r30
+000131 e0f4                      	ldi		r31, 0x04
+000132 9508                      	ret
+                                 
+                                 ;note_4:	
+                                 ;	rcall	indicate_D								; frequency of 146
+                                 ;	ldi		freq_lowerbound, 0x8C					; checking for frequncy of 140
+                                 ;	ldi		freq_upperbound, 0x00
+                                 ;	rcall	indicator
+                                 ;	ret
+                                 
+                                 ;note_3:
+                                 ;	rcall	indicate_3								; frequency if 196
+                                 ;	ldi		freq_lowerbound, 0xBC					; checking for frequncy of 188
+                                 ;	ldi		freq_upperbound, 0x00
+                                 ;	rcall	indicator
+                                 ;	ret
+                                 
+                                 ;note_2:
+                                 ;	rcall	indicate_2								; frequency of 246
+                                 ;	ldi		freq_lowerbound, 0xEE					; checking for frequncy of 238
+                                 ;	ldi		freq_upperbound, 0x00
+                                 ;	rcall	indicator
+                                 ;	ret
+                                 
 
 
 RESOURCE USE INFORMATION
@@ -1464,37 +1622,37 @@ counted separately from r26..r31 here.
 "ATmega328P" register use summary:
 x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:  63 r17:   2 r18:   9 r19:   6 r20:   6 
-r21:   6 r22:   8 r23:   8 r24:   2 r25:   2 r26:   0 r27:   0 r28:   2 
-r29:   2 r30:  10 r31:   0 
-Registers used: 13 out of 35 (37.1%)
+r13:   0 r14:   0 r15:   0 r16:  78 r17:   4 r18:   9 r19:  13 r20:  13 
+r21:   6 r22:  10 r23:  10 r24:   2 r25:   2 r26:   0 r27:   0 r28:   2 
+r29:   2 r30:  13 r31:   6 
+Registers used: 14 out of 35 (40.0%)
 
 "ATmega328P" instruction use summary:
-.lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   0 and   :   0 
+.lds  :   0 .sts  :   0 adc   :   1 add   :   1 adiw  :   0 and   :   0 
 andi  :   6 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
 brcc  :   0 brcs  :   0 break :   0 breq  :   0 brge  :   0 brhc  :   0 
-brhs  :   0 brid  :   0 brie  :   0 brlo  :   4 brlt  :   0 brmi  :   0 
+brhs  :   0 brid  :   0 brie  :   0 brlo  :   6 brlt  :   0 brmi  :   0 
 brne  :   3 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
 brvs  :   0 bset  :   0 bst   :   0 call  :   1 cbi   :   6 cbr   :   1 
-clc   :   0 clh   :   0 cli   :   2 cln   :   0 clr   :   4 cls   :   0 
-clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   4 cpc   :   4 
+clc   :   0 clh   :   0 cli   :   2 cln   :   0 clr   :   7 cls   :   0 
+clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   6 cpc   :   6 
 cpi   :   0 cpse  :   0 dec   :   1 eor   :   0 fmul  :   0 fmuls :   0 
 fmulsu:   0 icall :   0 ijmp  :   0 in    :   1 inc   :   2 jmp   :   3 
-ld    :   0 ldd   :   0 ldi   :  30 lds   :   5 lpm   :   0 lsl   :   0 
+ld    :   0 ldd   :   0 ldi   :  54 lds   :   5 lpm   :   0 lsl   :   0 
 lsr   :   0 mov   :   2 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
-neg   :   0 nop   :   0 or    :   0 ori   :  12 out   :  20 pop   :   0 
-push  :   0 rcall :  25 ret   :  19 reti  :   3 rjmp  :  14 rol   :   0 
+neg   :   0 nop   :   0 or    :   0 ori   :  12 out   :  22 pop   :   0 
+push  :   0 rcall :  45 ret   :  37 reti  :   3 rjmp  :  14 rol   :   0 
 ror   :   0 sbc   :   0 sbci  :   0 sbi   :   3 sbic  :   0 sbis  :   0 
-sbiw  :   1 sbr   :   0 sbrc  :   9 sbrs  :   6 sec   :   0 seh   :   0 
+sbiw  :   1 sbr   :   0 sbrc  :   9 sbrs  :   9 sec   :   0 seh   :   0 
 sei   :   3 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
 sez   :   0 sleep :   1 spm   :   0 st    :   0 std   :   0 sts   :   7 
 sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   3 
-Instructions used: 31 out of 113 (27.4%)
+Instructions used: 33 out of 113 (29.2%)
 
 "ATmega328P" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x0001ca    442      0    442   32768   1.3%
+[.cseg] 0x000000 0x000266    598      0    598   32768   1.8%
 [.dseg] 0x000100 0x000100      0      0      0    2048   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 

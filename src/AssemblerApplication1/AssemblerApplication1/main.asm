@@ -30,6 +30,12 @@
 	; 1st bit -> 1 means Adaptive tuning done
 	; 2nd bit -> 1 means clockwise turning--> increase frequency, 0 means anticlockwise turning--> increase frequency
 
+	;r31
+	; stores current frequency
+	; 0 th bit = 1 for A
+	; 1 st bit = 1 for C
+	; 2 nd bit = 1 for E
+
 	.def	crosscounterL = r23						; low register for count the number of times the signal passed 3.3V
 	.def	crosscounterH = r22						; high register for crosscounter
 
@@ -50,8 +56,9 @@ setup:
 	ldi		ctrl, (1<<PB0) | (1<<PB1) | (1<<PB2) | (1<<PB3)
 	out		DDRB, ctrl								; set output ports in PORTB
 
-	ldi		ctrl,(1<<PC0)
-	out		DDRC, ctrl								; set-up debugger output for power managemnet --- PD5
+	ldi		ctrl,(1<<PC0)|(1<<PC1)|(1<<PC2)|(1<<PC3)
+	out		DDRC, ctrl								; set-up seven segment display
+	;out		PORTC, ctrl
 
 	clr		crosscounterL							; initialize the counter
 	clr		crosscounterH
@@ -133,7 +140,7 @@ clockwise:
 	rjmp	main_loop
 
 output_handler:
-	rcall	indicator
+	rcall	super_indicator
 
 	sbrc	onesecpassed, 1							; if auto mode, check for the initialization
 	rcall	init
@@ -217,3 +224,5 @@ WDT_off:
 .include	"motor_controller.asm"
 .include	"output_controller.asm"
 .include	"power_controller.asm"
+.include	"display_controller.asm"
+.include	"super_controller.asm"
