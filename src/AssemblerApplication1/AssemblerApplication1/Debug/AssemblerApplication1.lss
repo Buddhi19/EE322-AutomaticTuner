@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm Tue Jan 02 23:29:55 2024
+AVRASM ver. 2.2.8  D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm Tue Jan 02 23:38:24 2024
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
 D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(9): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328pdef.inc'
@@ -1376,7 +1376,7 @@ D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1
                                  
 0000b8 f068                      	brlo	freq_less_than_low						; branch if frequency less than 240
                                  
-0000b9 e109                      	ldi		ctrl, 0x19
+0000b9 e109                      	ldi		ctrl, 0x19								; add 25 range
 0000ba e010                      	ldi		r17, 0x00
                                  
 0000bb 0f30                      	add		freq_lowerbound, ctrl
@@ -1455,7 +1455,7 @@ D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1
                                  .include	"display_controller.asm"
                                  
                                  indicate_F:
-0000e3 e00f                      	ldi		ctrl, 0b00001111						; corresponding value to represent E
+0000e3 e00f                      	ldi		ctrl, 0b00001111						; corresponding value to represent F
 0000e4 d01f                      	rcall	display_bcd
 0000e5 9508                      	ret
                                  
@@ -1470,17 +1470,17 @@ D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1
 0000eb 9508                      	ret
                                  
                                  indicate_3:
-0000ec e00c                      	ldi		ctrl, 0b00001100						; corresponding value to represent E
+0000ec e00c                      	ldi		ctrl, 0b00001100						; corresponding value to represent 3
 0000ed d016                      	rcall	display_bcd
 0000ee 9508                      	ret
                                  
                                  indicate_5:
-0000ef e00a                      	ldi		ctrl, 0b00001010						; corresponding value to represent E
+0000ef e00a                      	ldi		ctrl, 0b00001010						; corresponding value to represent 5
 0000f0 d013                      	rcall	display_bcd
 0000f1 9508                      	ret
                                  
                                  indicate_1:
-0000f2 e008                      	ldi		ctrl, 0b00001000						; corresponding value to represent E
+0000f2 e008                      	ldi		ctrl, 0b00001000						; corresponding value to represent 1
 0000f3 d010                      	rcall	display_bcd
 0000f4 9508                      	ret
                                  
@@ -1490,22 +1490,22 @@ D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1
 0000f7 9508                      	ret
                                  
                                  indicate_C:
-0000f8 e003                      	ldi		ctrl, 0b00000011						; corresponding value to represent E
+0000f8 e003                      	ldi		ctrl, 0b00000011						; corresponding value to represent C
 0000f9 d00a                      	rcall	display_bcd
 0000fa 9508                      	ret
                                  
                                  indicate_6:
-0000fb e006                      	ldi		ctrl, 0b00000110						; corresponding value to represent E
+0000fb e006                      	ldi		ctrl, 0b00000110						; corresponding value to represent 6
 0000fc d007                      	rcall	display_bcd
 0000fd 9508                      	ret
                                  
                                  indicate_2:
-0000fe e004                      	ldi		ctrl, 0b00000100						; corresponding value to represent E
+0000fe e004                      	ldi		ctrl, 0b00000100						; corresponding value to represent 2
 0000ff d004                      	rcall	display_bcd
 000100 9508                      	ret
                                  
                                  indicate_A:
-000101 e005                      	ldi		ctrl, 0b00000101						; corresponding value to represent E
+000101 e005                      	ldi		ctrl, 0b00000101						; corresponding value to represent A
 000102 d001                      	rcall	display_bcd
 000103 9508                      	ret
                                  

@@ -1,6 +1,6 @@
 .cseg
 indicate_F:
-	ldi		ctrl, 0b00001111						; corresponding value to represent E
+	ldi		ctrl, 0b00001111						; corresponding value to represent F
 	rcall	display_bcd
 	ret
 
@@ -15,17 +15,17 @@ indicate_D:
 	ret
 
 indicate_3:
-	ldi		ctrl, 0b00001100						; corresponding value to represent E
+	ldi		ctrl, 0b00001100						; corresponding value to represent 3
 	rcall	display_bcd
 	ret
 
 indicate_5:
-	ldi		ctrl, 0b00001010						; corresponding value to represent E
+	ldi		ctrl, 0b00001010						; corresponding value to represent 5
 	rcall	display_bcd
 	ret
 
 indicate_1:
-	ldi		ctrl, 0b00001000						; corresponding value to represent E
+	ldi		ctrl, 0b00001000						; corresponding value to represent 1
 	rcall	display_bcd
 	ret
 
@@ -35,22 +35,22 @@ indicate_E:
 	ret
 
 indicate_C:
-	ldi		ctrl, 0b00000011						; corresponding value to represent E
+	ldi		ctrl, 0b00000011						; corresponding value to represent C
 	rcall	display_bcd
 	ret
 
 indicate_6:
-	ldi		ctrl, 0b00000110						; corresponding value to represent E
+	ldi		ctrl, 0b00000110						; corresponding value to represent 6
 	rcall	display_bcd
 	ret
 
 indicate_2:
-	ldi		ctrl, 0b00000100						; corresponding value to represent E
+	ldi		ctrl, 0b00000100						; corresponding value to represent 2
 	rcall	display_bcd
 	ret
 
 indicate_A:
-	ldi		ctrl, 0b00000101						; corresponding value to represent E
+	ldi		ctrl, 0b00000101						; corresponding value to represent A
 	rcall	display_bcd
 	ret
 
