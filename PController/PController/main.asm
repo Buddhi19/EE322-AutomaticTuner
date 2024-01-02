@@ -6,8 +6,8 @@
 
 .include "m328pdef.inc"
 
-.def p_con = r21
-.def comp = r20
+.def p_con = r26
+.def comp = r27
 .def crosscounterH = r22
 .def crosscounterL = r23
 
@@ -21,7 +21,7 @@ start:
 	rjmp start
 
 low_freq:
-	ser comp ; se all bits of comp
+	ser comp ; set all bits of comp
 	sub comp, crosscounterL ; subtract value read from the desired value
 	breq doneL
 	mov p_con, comp ; move the difference to p_con register

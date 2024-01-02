@@ -1,8 +1,10 @@
 
-AVRASM ver. 2.2.8  D:\Sem5\EE322 - Embedded Systems Design\Project\EE322-AutomaticTuner\PController\PController\main.asm Fri Dec 29 10:51:55 2023
+AVRASM ver. 2.2.8  D:\Sem5\EE322 - Embedded Systems Design\Project\EE322-AutomaticTuner\PController\PController\main.asm Tue Jan 02 19:46:23 2024
 
 [builtin](2): Including file 'E:/Assembly\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
 D:\Sem5\EE322 - Embedded Systems Design\Project\EE322-AutomaticTuner\PController\PController\main.asm(7): Including file 'E:/Assembly\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328pdef.inc'
+D:\Sem5\EE322 - Embedded Systems Design\Project\EE322-AutomaticTuner\PController\PController\main.asm(9): warning: Register r26 already defined by the .DEF directive
+D:\Sem5\EE322 - Embedded Systems Design\Project\EE322-AutomaticTuner\PController\PController\main.asm(10): warning: Register r27 already defined by the .DEF directive
 [builtin](2): Including file 'E:/Assembly\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
 D:\Sem5\EE322 - Embedded Systems Design\Project\EE322-AutomaticTuner\PController\PController\main.asm(7): Including file 'E:/Assembly\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328pdef.inc'
                                  
@@ -1037,8 +1039,8 @@ D:\Sem5\EE322 - Embedded Systems Design\Project\EE322-AutomaticTuner\PController
                                  
                                  ; ***** END OF FILE ******************************************************
                                  
-                                 .def p_con = r21
-                                 .def comp = r20
+                                 .def p_con = r26
+                                 .def comp = r27
                                  .def crosscounterH = r22
                                  .def crosscounterL = r23
                                  
@@ -1052,24 +1054,24 @@ D:\Sem5\EE322 - Embedded Systems Design\Project\EE322-AutomaticTuner\PController
 000005 cffc                      	rjmp start
                                  
                                  low_freq:
-000006 ef4f                      	ser comp ; se all bits of comp
-000007 1b47                      	sub comp, crosscounterL ; subtract value read from the desired value
+000006 efbf                      	ser comp ; se all bits of comp
+000007 1bb7                      	sub comp, crosscounterL ; subtract value read from the desired value
 000008 f019                      	breq doneL
-000009 2f54                      	mov p_con, comp ; move the difference to p_con register
-00000a 9556                      	lsr p_con
-00000b 9556                      	lsr p_con ; divide difference by 4, kp=1/4
+000009 2fab                      	mov p_con, comp ; move the difference to p_con register
+00000a 95a6                      	lsr p_con
+00000b 95a6                      	lsr p_con ; divide difference by 4, kp=1/4
                                  	doneL:
 00000c cff5                      		rjmp start ; kill the loop if equal
 00000d cff8                      	rjmp low_freq
                                  
                                  
                                  high_freq:
-00000e 2744                      	clr comp ; clear all bits of comp
-00000f 1b47                      	sub comp, crosscounterL ; subtract value read from the desired value
+00000e 27bb                      	clr comp ; clear all bits of comp
+00000f 1bb7                      	sub comp, crosscounterL ; subtract value read from the desired value
 000010 f019                      	breq doneH
-000011 2f54                      	mov p_con, comp ; move the difference to p_con register
-000012 9556                      	lsr p_con
-000013 9556                      	lsr p_con ; divide difference by 4, kp=1/4
+000011 2fab                      	mov p_con, comp ; move the difference to p_con register
+000012 95a6                      	lsr p_con
+000013 95a6                      	lsr p_con ; divide difference by 4, kp=1/4
                                  	doneH:
 000014 cfed                      		rjmp start ; kill the loop if equal
 
@@ -1091,8 +1093,8 @@ counted separately from r26..r31 here.
 "ATmega328P" register use summary:
 x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:   0 r17:   0 r18:   0 r19:   0 r20:   6 
-r21:   6 r22:   1 r23:   2 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
+r13:   0 r14:   0 r15:   0 r16:   0 r17:   0 r18:   0 r19:   0 r20:   0 
+r21:   0 r22:   1 r23:   2 r24:   0 r25:   0 r26:   6 r27:   6 r28:   0 
 r29:   0 r30:   0 r31:   0 
 Registers used: 4 out of 35 (11.4%)
 
@@ -1125,4 +1127,4 @@ Segment   Begin    End      Code   Data   Used    Size   Use%
 [.dseg] 0x000100 0x000100      0      0      0    2048   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 
-Assembly complete, 0 errors, 0 warnings
+Assembly complete, 0 errors, 2 warnings

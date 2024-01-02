@@ -24,12 +24,19 @@ indicator:
 	rcall	high_led_on								; call high led if the frequnecy is greater than 260
 	ldi		freq_map, 0x04
 
+	ldi abs_error, 0xF0							; desired frequency value = 240
+	sub abs_error, crosscounterL					; store the value of absolute error in abs_error register
+
 	ret
 
 
 freq_less_than_240:
 	rcall	low_led_on
-	ldi		freq_map, 0x01		
+	ldi		freq_map, 0x01
+	
+	ldi abs_error, 0xF0							; desired frequency value = 240
+	sub abs_error, crosscounterL					; store the value of absolute error in abs_error register
+		
 	ret
 
 freq_is_ok:

@@ -29,6 +29,8 @@
 	.def	freq_lowerbound = r19					; lower register used to compare results
 	.def	freq_upperbound = r20					; upper register used to compare the results
 
+	.def	abs_error = r26							; absolute error = |value read - desired value|
+
 	.cseg 
 	.org	0x00									; set instruction starting address to 0x00
 		jmp	setup
@@ -95,6 +97,30 @@ auto:
 	rcall	step_rotate_anticlockwise				; tune down
 
 	rjmp	main_loop
+
+p_controller:
+	lsr abs_error
+	lsr abs_error
+	lsr abs_error
+	lsr abs_error									; divide the error by 16 -> k_p = 1/16
+
+clockwise_rotate:
+	ldi r27, 0x01									; store 1 in r27
+	sub abs_error, r27								; subtract 1 by the error
+	rcall step_rotate_clockwise						; rotate one step in clockwise clockwise direction
+	ldi r27, 0x00									; store 0 in r27
+	cp r27, abs_error								; check whether the error is 0
+	breq output_handler								; jump out if error is 0 => rotated desired number of steps
+	rjmp clockwise_rotate							; if not loop again
+
+anticlockwise_rotate:
+	ldi r27, 0x01									; store 1 in r27
+	sub abs_error, r27								; subtract 1 by the error
+	rcall step_rotate_anticlockwise					; rotate one step in clockwise clockwise direction
+	ldi r27, 0x00									; store 0 in r27
+	cp r27, abs_error								; check whether the error is 0
+	breq output_handler								; jump out if error is 0 => rotated desired number of steps
+	rjmp clockwise_rotate							; if not loop again
 
 output_handler:
 ;	in		ctrl, PIND								; Debugger code

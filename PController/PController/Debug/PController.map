@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  D:\Sem5\EE322 - Embedded Systems Design\Project\EE322-AutomaticTuner\PController\PController\main.asm Fri Dec 29 10:51:55 2023
+AVRASM ver. 2.2.8  D:\Sem5\EE322 - Embedded Systems Design\Project\EE322-AutomaticTuner\PController\PController\main.asm Tue Jan 02 19:46:23 2024
 
 
 EQU  SIGNATURE_000 0000001e
@@ -695,8 +695,8 @@ EQU  ACIaddr      0000002e
 EQU  TWIaddr      00000030
 EQU  SPMRaddr     00000032
 EQU  INT_VECTORS_SIZE 00000034
-DEF  p_con        r21
-DEF  comp         r20
+DEF  p_con        r26
+DEF  comp         r27
 DEF  crosscounterH r22
 DEF  crosscounterL r23
 CSEG start        00000002
