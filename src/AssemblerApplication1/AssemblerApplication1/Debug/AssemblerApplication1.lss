@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm Mon Jan 01 20:01:18 2024
+AVRASM ver. 2.2.8  D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm Tue Jan 02 11:29:00 2024
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
 D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(9): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328pdef.inc'
@@ -1086,13 +1086,13 @@ D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1
 00000c 940c 006e                 		jmp		WDT
                                  	
                                  setup:
-00000e e007                      	ldi 	ctrl, (1<<PD0) | (1<<PD1) | (1<<PD2)
+00000e e207                      	ldi 	ctrl, (1<<PD0) | (1<<PD1) | (1<<PD2)|(1<<PD5)
 00000f b90a                      	out		DDRD, ctrl								; set output ports in PORTD
 000010 e00f                      	ldi		ctrl, (1<<PB0) | (1<<PB1) | (1<<PB2) | (1<<PB3)
 000011 b904                      	out		DDRB, ctrl								; set output ports in PORTB
                                  
 000012 e001                      	ldi		ctrl,(1<<PC0)
-000013 b907                      	out		DDRC, ctrl								; set-up debugger output for power managemnet
+000013 b907                      	out		DDRC, ctrl								; set-up debugger output for power managemnet --- PD5
                                  
 000014 2777                      	clr		crosscounterL							; initialize the counter
 000015 2766                      	clr		crosscounterH
@@ -1409,9 +1409,10 @@ D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1
                                  sleep_mode:
 0000d1 2700                      	clr		ctrl
 0000d2 b905                      	out		PORTB, ctrl								; set all other outputs to low
-0000d3 b90b                      	out		PORTD, ctrl
-0000d4 e001                      	ldi		ctrl, (1<<0)							; set power saver indicator high
-0000d5 b908                      	out		PORTC, ctrl
+0000d3 e200                      	ldi		ctrl, (1<<PD5)
+0000d4 b90b                      	out		PORTD, ctrl
+                                 	;ldi		ctrl, (1<<0)							; set power saver indicator high
+                                 	;out		PORTC, ctrl
                                  
                                  ;	ldi		ctrl,(1<<3)								; interrupt call for a Falling edge		
                                  ;	sts		EICRA, ctrl								; interrupt call for logical change at INT1
@@ -1419,31 +1420,31 @@ D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1
                                  ;	ldi		ctrl, (1<<1)
                                  ;	out		EIMSK, ctrl								; enable exteranl interrupt request 1
                                  	
-0000d6 df9f                      	rcall	WDT_off									; turn off watchdog timer
+0000d5 dfa0                      	rcall	WDT_off									; turn off watchdog timer
                                  
-0000d7 e001                      	ldi		ctrl, (1<<0)
-0000d8 bf03                      	out		SMCR, ctrl								; enable sleep mode
+0000d6 e001                      	ldi		ctrl, (1<<0)
+0000d7 bf03                      	out		SMCR, ctrl								; enable sleep mode
                                  
-0000d9 9100 0035                 	lds		ctrl, MCUCR
-0000db 6600                      	ori		ctrl, (1<<6)|(1<<5)						; set BODS and BODSE
+0000d8 9100 0035                 	lds		ctrl, MCUCR
+0000da 6600                      	ori		ctrl, (1<<6)|(1<<5)						; set BODS and BODSE
                                  
-0000dc bf05                      	out		MCUCR, ctrl
+0000db bf05                      	out		MCUCR, ctrl
                                  
-0000dd 7d0f                      	cbr		ctrl, (1<<5)	
-0000de bf05                      	out		MCUCR, ctrl								; set only BODS bit
+0000dc 7d0f                      	cbr		ctrl, (1<<5)	
+0000dd bf05                      	out		MCUCR, ctrl								; set only BODS bit
                                  
-0000df 9478                      	sei
+0000de 9478                      	sei
                                  
-0000e0 9588                      	sleep											; sleep mode enabled
+0000df 9588                      	sleep											; sleep mode enabled
                                  
-0000e1 94f8                      	cli												; wake up at external interrupt
+0000e0 94f8                      	cli												; wake up at external interrupt
                                  
-0000e2 2700                      	clr		ctrl									; switch off power save button
-0000e3 b908                      	out		PORTC, ctrl
+0000e1 2700                      	clr		ctrl									; switch off power save button
+0000e2 b90b                      	out		PORTD, ctrl
                                  
-0000e4 bf03                      	out		SMCR, ctrl								; clear sleep bit
+0000e3 bf03                      	out		SMCR, ctrl								; clear sleep bit
                                  
-0000e5 9508                      	ret
+0000e4 9508                      	ret
 
 
 RESOURCE USE INFORMATION
@@ -1463,7 +1464,7 @@ counted separately from r26..r31 here.
 "ATmega328P" register use summary:
 x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:  64 r17:   2 r18:   9 r19:   6 r20:   6 
+r13:   0 r14:   0 r15:   0 r16:  63 r17:   2 r18:   9 r19:   6 r20:   6 
 r21:   6 r22:   8 r23:   8 r24:   2 r25:   2 r26:   0 r27:   0 r28:   2 
 r29:   2 r30:  10 r31:   0 
 Registers used: 13 out of 35 (37.1%)
@@ -1481,7 +1482,7 @@ cpi   :   0 cpse  :   0 dec   :   1 eor   :   0 fmul  :   0 fmuls :   0
 fmulsu:   0 icall :   0 ijmp  :   0 in    :   1 inc   :   2 jmp   :   3 
 ld    :   0 ldd   :   0 ldi   :  30 lds   :   5 lpm   :   0 lsl   :   0 
 lsr   :   0 mov   :   2 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
-neg   :   0 nop   :   0 or    :   0 ori   :  12 out   :  21 pop   :   0 
+neg   :   0 nop   :   0 or    :   0 ori   :  12 out   :  20 pop   :   0 
 push  :   0 rcall :  25 ret   :  19 reti  :   3 rjmp  :  14 rol   :   0 
 ror   :   0 sbc   :   0 sbci  :   0 sbi   :   3 sbic  :   0 sbis  :   0 
 sbiw  :   1 sbr   :   0 sbrc  :   9 sbrs  :   6 sec   :   0 seh   :   0 
@@ -1493,7 +1494,7 @@ Instructions used: 31 out of 113 (27.4%)
 "ATmega328P" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x0001cc    444      0    444   32768   1.4%
+[.cseg] 0x000000 0x0001ca    442      0    442   32768   1.3%
 [.dseg] 0x000100 0x000100      0      0      0    2048   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 

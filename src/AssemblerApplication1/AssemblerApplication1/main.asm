@@ -45,13 +45,13 @@
 		jmp		WDT
 	
 setup:
-	ldi 	ctrl, (1<<PD0) | (1<<PD1) | (1<<PD2)
+	ldi 	ctrl, (1<<PD0) | (1<<PD1) | (1<<PD2)|(1<<PD5)
 	out		DDRD, ctrl								; set output ports in PORTD
 	ldi		ctrl, (1<<PB0) | (1<<PB1) | (1<<PB2) | (1<<PB3)
 	out		DDRB, ctrl								; set output ports in PORTB
 
 	ldi		ctrl,(1<<PC0)
-	out		DDRC, ctrl								; set-up debugger output for power managemnet
+	out		DDRC, ctrl								; set-up debugger output for power managemnet --- PD5
 
 	clr		crosscounterL							; initialize the counter
 	clr		crosscounterH
