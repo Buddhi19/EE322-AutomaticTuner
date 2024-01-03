@@ -8,16 +8,13 @@ indicator:
 	cp		crosscounterL, freq_lowerbound			; compare low bytes
 	cpc		crosscounterH, freq_upperbound			; compare higher bytes with carry from above
 
-	brlo	freq_less_than_low						; branch if frequency less than 240
+	brlo	freq_less_than_low						; branch if frequency less than 
 
 	ldi		ctrl, 0x19								; add 25 range
 	ldi		r17, 0x00
 
 	add		freq_lowerbound, ctrl
 	adc		freq_upperbound, r17
-
-	ldi		freq_lowerbound, 0x18					; check for frequnecy of Upper Frequency
-	ldi		freq_upperbound, 0x01
 
 	cp		crosscounterL, freq_lowerbound			; compare low bytes
 	cpc		crosscounterH, freq_upperbound			; compare higher bytes
@@ -28,6 +25,17 @@ indicator:
 	andi	freq_map,(1<<3)|(1<<4)|(1<<5)
 	ori		freq_map, (1<<2)
 
+	mov		ctrl, crosscounterL
+	mov		r17, crosscounterH
+
+	sub		ctrl, freq_lowerbound
+	sbc		r17, freq_upperbound
+
+	mov		freq_lowerbound, ctrl
+	mov		freq_upperbound, r17
+
+	rcall	P_controller
+
 	ret
 
 
@@ -35,6 +43,12 @@ freq_less_than_low:
 	rcall	low_led_on
 	andi	freq_map, (1<<3)|(1<<4)|(1<<5)			; donot change bits in 3,4,5
 	ori		freq_map, (1<<0)						; need a debugging process
+
+	sub		freq_lowerbound, crosscounterL
+	sbc		freq_upperbound, crosscounterH
+
+	rcall	P_controller
+
 	ret
 
 freq_is_ok:
@@ -43,4 +57,23 @@ freq_is_ok:
 	ori		freq_map, (1<<1)
 	ret
 
+P_controller:
+	lsr		freq_lowerbound
+	lsr		freq_lowerbound
+	lsr		freq_lowerbound
+	
+	breq	rotate_once
 
+	ldi		ctrl, 0x04
+	cp		freq_lowerbound,ctrl
+
+	brlo	done
+	ldi		freq_lowerbound, 0x04
+	ret
+
+done:
+	ret
+
+rotate_once:
+	ldi		freq_lowerbound,0x01
+	ret

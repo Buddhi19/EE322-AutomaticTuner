@@ -122,8 +122,8 @@ tune_up:
 	rjmp	clockwise
 
 	sbrc	r30, 2									; if bit 1 is cleared rotate anticlockwise to increase f
-	rjmp	clockwise
-	rcall	step_rotate_anticlockwise
+	rjmp	clockwise_loop
+	rjmp	anticlockwise_loop
 	rjmp	main_loop
 
 tune_down:
@@ -131,13 +131,25 @@ tune_down:
 	rjmp	clockwise
 
 	sbrs	r30, 2									; if bit 1 is set rotate anticlockwise to decrease f
-	rjmp	clockwise
-	rcall	step_rotate_anticlockwise
+	rjmp	clockwise_loop
+	rjmp	anticlockwise_loop
 	ret
 
 clockwise:
 	rcall	step_rotate_clockwise
 	rjmp	main_loop
+
+clockwise_loop:
+	dec		freq_lowerbound
+	rcall	step_rotate_clockwise
+	brne	clockwise_loop
+	ret
+
+anticlockwise_loop:
+	dec		freq_lowerbound
+	rcall	step_rotate_anticlockwise
+	brne	anticlockwise_loop
+	ret
 
 output_handler:
 	rcall	super_indicator
