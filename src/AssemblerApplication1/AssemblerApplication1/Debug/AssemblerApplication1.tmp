@@ -31,8 +31,8 @@
  </OUTPUT_FILES>
  <LABELS>
   <setup><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>53</LINE></setup>
-  <isr_int1><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>213</LINE></isr_int1>
-  <WDT><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>207</LINE></WDT>
+  <isr_int1><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>215</LINE></isr_int1>
+  <WDT><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>208</LINE></WDT>
   <main_loop><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>83</LINE></main_loop>
   <output_handler><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>153</LINE></output_handler>
   <manual><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>99</LINE></manual>
@@ -46,12 +46,12 @@
   <clockwise_loop><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>141</LINE></clockwise_loop>
   <anticlockwise_loop><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>147</LINE></anticlockwise_loop>
   <super_indicator><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\super_controller.asm</FILE><LINE>2</LINE></super_indicator>
-  <init><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>179</LINE></init>
-  <WDT_off><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>224</LINE></WDT_off>
-  <initializer><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>184</LINE></initializer>
-  <store_current><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>200</LINE></store_current>
-  <freq_decreased><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>195</LINE></freq_decreased>
-  <no_overflow><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>221</LINE></no_overflow>
+  <init><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>180</LINE></init>
+  <WDT_off><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>226</LINE></WDT_off>
+  <initializer><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>185</LINE></initializer>
+  <store_current><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>201</LINE></store_current>
+  <freq_decreased><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>196</LINE></freq_decreased>
+  <no_overflow><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>223</LINE></no_overflow>
   <low_led_on><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\led_controller.asm</FILE><LINE>6</LINE></low_led_on>
   <ok_led_on><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\led_controller.asm</FILE><LINE>13</LINE></ok_led_on>
   <high_led_on><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\led_controller.asm</FILE><LINE>20</LINE></high_led_on>
