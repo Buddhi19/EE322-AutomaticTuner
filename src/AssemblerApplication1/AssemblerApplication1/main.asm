@@ -51,7 +51,7 @@
 		jmp		WDT
 	
 setup:
-	ldi 	ctrl, (1<<PD0) | (1<<PD1) | (1<<PD2)|(1<<PD5)|(1<<PD4)
+	ldi 	ctrl, (1<<PD0) | (1<<PD1) | (1<<PD2)|(1<<PD5)
 	out		DDRD, ctrl								; set output ports in PORTD
 	ldi		ctrl, (1<<PB0) | (1<<PB1) | (1<<PB2) | (1<<PB3)
 	out		DDRB, ctrl								; set output ports in PORTB
@@ -173,7 +173,7 @@ output_handler:
 	sts		WDTCSR, ctrl
 
 	sei												; enable global interrupts
-	cbi		PORTD, 4						
+	;cbi		PORTD, 4						
 
 	rjmp	main_loop
 
@@ -206,7 +206,7 @@ store_current:
 	ret
 
 WDT:												; interrupt handler for watchdog timers
-	sbi		PORTD, 4								; debugger
+	;sbi		PORTD, 4								; debugger
 	cli												; disable interrupts
 	ori		onesecpassed, (1<<0)
 	reti
