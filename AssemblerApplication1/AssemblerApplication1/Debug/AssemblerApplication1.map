@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm Thu Jan 04 11:52:42 2024
+AVRASM ver. 2.2.8  D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm Sun Mar 10 11:22:31 2024
 
 
 EQU  SIGNATURE_000 0000001e
@@ -711,7 +711,6 @@ CSEG setup        0000000e
 CSEG isr_int1     00000078
 CSEG WDT          00000075
 CSEG main_loop    00000025
-CSEG output_handler 0000004f
 CSEG manual       0000002d
 CSEG auto         00000033
 CSEG step_rotate_clockwise 000000ad
@@ -722,6 +721,7 @@ CSEG tune_down    0000003f
 CSEG clockwise    00000045
 CSEG clockwise_loop 00000047
 CSEG anticlockwise_loop 0000004b
+CSEG output_handler 0000004f
 CSEG super_indicator 00000121
 CSEG init         00000064
 CSEG WDT_off      0000007d

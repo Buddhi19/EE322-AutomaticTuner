@@ -1,24 +1,24 @@
 
-AVRASM ver. 2.2.8  D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm Thu Jan 04 11:52:42 2024
+AVRASM ver. 2.2.8  D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm Sun Mar 10 11:22:31 2024
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
-D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(9): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328pdef.inc'
-D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(235): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\led_controller.asm'
-D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(236): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\delay.asm'
-D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(237): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\motor_controller.asm'
-D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(238): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\output_controller.asm'
-D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(239): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\power_controller.asm'
-D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(240): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\display_controller.asm'
-D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(241): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\super_controller.asm'
+D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm(9): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328pdef.inc'
+D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm(236): Including file 'D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\led_controller.asm'
+D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm(237): Including file 'D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\delay.asm'
+D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm(238): Including file 'D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\motor_controller.asm'
+D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm(239): Including file 'D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\output_controller.asm'
+D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm(240): Including file 'D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\power_controller.asm'
+D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm(241): Including file 'D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\display_controller.asm'
+D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm(242): Including file 'D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\super_controller.asm'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
-D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(9): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328pdef.inc'
-D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(235): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\led_controller.asm'
-D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(236): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\delay.asm'
-D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(237): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\motor_controller.asm'
-D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(238): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\output_controller.asm'
-D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(239): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\power_controller.asm'
-D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(240): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\display_controller.asm'
-D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm(241): Including file 'D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\super_controller.asm'
+D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm(9): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328pdef.inc'
+D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm(236): Including file 'D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\led_controller.asm'
+D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm(237): Including file 'D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\delay.asm'
+D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm(238): Including file 'D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\motor_controller.asm'
+D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm(239): Including file 'D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\output_controller.asm'
+D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm(240): Including file 'D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\power_controller.asm'
+D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm(241): Including file 'D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\display_controller.asm'
+D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm(242): Including file 'D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\super_controller.asm'
                                  
                                  ;
                                  
@@ -1127,13 +1127,14 @@ D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1
                                  
                                  main_loop:
 000025 fd50                      	sbrc	onesecpassed,0							; if one second timer passed
-000026 c028                      	rjmp	output_handler							; somethings there in the output
+                                 ;	rjmp	output_handler							; somethings there in the output
                                  	; controls main loop depending on auto/manual conditions
-000027 b103                      	in		ctrl, PINB								; take PINB states
+000026 b103                      	in		ctrl, PINB								; take PINB states
                                  
-000028 7051                      	andi	onesecpassed, (1<<0)					; put auto/manual state in the register
+000027 7051                      	andi	onesecpassed, (1<<0)					; put auto/manual state in the register
                                  
-000029 ff06                      	sbrs	ctrl, 6									; check for auto/manual conditions
+000028 b116                      	in		r17, PINC
+000029 ff14                      	sbrs	r17, 4									; check for auto/manual conditions
 00002a c002                      	rjmp	manual
                                  	
 00002b 6052                      	ori		onesecpassed, (1<<1)
@@ -1668,7 +1669,7 @@ counted separately from r26..r31 here.
 "ATmega328P" register use summary:
 x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:  83 r17:   7 r18:   9 r19:  23 r20:  15 
+r13:   0 r14:   0 r15:   0 r16:  82 r17:   9 r18:   9 r19:  23 r20:  15 
 r21:   6 r22:  12 r23:  12 r24:   2 r25:   2 r26:   0 r27:   0 r28:   2 
 r29:   2 r30:  13 r31:   6 
 Registers used: 14 out of 35 (40.0%)
@@ -1683,11 +1684,11 @@ brvs  :   0 bset  :   0 bst   :   0 call  :   1 cbi   :   6 cbr   :   1
 clc   :   0 clh   :   0 cli   :   2 cln   :   0 clr   :   7 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   7 cpc   :   6 
 cpi   :   0 cpse  :   0 dec   :   3 eor   :   0 fmul  :   0 fmuls :   0 
-fmulsu:   0 icall :   0 ijmp  :   0 in    :   1 inc   :   2 jmp   :   3 
+fmulsu:   0 icall :   0 ijmp  :   0 in    :   2 inc   :   2 jmp   :   3 
 ld    :   0 ldd   :   0 ldi   :  55 lds   :   5 lpm   :   0 lsl   :   0 
 lsr   :   3 mov   :   6 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
 neg   :   0 nop   :   0 or    :   0 ori   :  12 out   :  22 pop   :   0 
-push  :   0 rcall :  47 ret   :  40 reti  :   3 rjmp  :  17 rol   :   0 
+push  :   0 rcall :  47 ret   :  40 reti  :   3 rjmp  :  16 rol   :   0 
 ror   :   0 sbc   :   2 sbci  :   0 sbi   :   3 sbic  :   0 sbis  :   0 
 sbiw  :   1 sbr   :   0 sbrc  :   9 sbrs  :   9 sec   :   0 seh   :   0 
 sei   :   3 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 

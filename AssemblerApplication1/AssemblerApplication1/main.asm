@@ -88,7 +88,8 @@ main_loop:
 
 	andi	onesecpassed, (1<<0)					; put auto/manual state in the register
 
-	sbrs	ctrl, 6									; check for auto/manual conditions
+	in		r17, PINC
+	sbrs	r17, 4									; check for auto/manual conditions
 	rjmp	manual
 	
 	ori		onesecpassed, (1<<1)
