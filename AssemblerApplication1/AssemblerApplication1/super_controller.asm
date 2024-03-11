@@ -1,6 +1,6 @@
 .cseg
 super_indicator:
-	ldi		freq_lowerbound, 0x46					; checking for frequncy of 50
+	ldi		freq_lowerbound, 0x14					; checking for frequncy of 20
 	ldi		freq_upperbound, 0x00
 
 	cp		crosscounterL, freq_lowerbound			; compare low bytes
@@ -8,7 +8,7 @@ super_indicator:
 
 	brlo	sleep_mode
 
-	ldi		freq_lowerbound, 0x96					; checking for frequncy of 150
+	ldi		freq_lowerbound, 0x28					; checking for frequncy of 40
 	ldi		freq_upperbound, 0x00
 
 	cp		crosscounterL, freq_lowerbound			; compare low bytes
@@ -16,8 +16,8 @@ super_indicator:
 
 	brlo	note_3
 
-	ldi		freq_lowerbound, 0x2C					; checking for frequncy of 300
-	ldi		freq_upperbound, 0x01
+	ldi		freq_lowerbound, 0x4B					; checking for frequncy of 300/4 =75
+	ldi		freq_upperbound, 0x00
 
 	cp		crosscounterL, freq_lowerbound			; compare low bytes
 	cpc		crosscounterH, freq_upperbound			; compare higher bytes
@@ -27,9 +27,9 @@ super_indicator:
 	sbrs	r31, 2
 	rcall	flag_clear_1
 
-	rcall	indicate_E								; frequency of 330
-	ldi		freq_lowerbound, 0x40					; checking for frequncy of 320
-	ldi		freq_upperbound, 0x01
+	rcall	indicate_E								; frequency of 330/4 = 83
+	ldi		freq_lowerbound, 0x50					; checking for frequncy of 320/4 = 80
+	ldi		freq_upperbound, 0x00
 	rcall	indicator
 	ret
 
@@ -37,8 +37,8 @@ note_3:
 	sbrs	r31, 0									; if frequency is changed remap adaptive tuning
 	rcall	flag_clear_3
 
-	rcall	indicate_A								; frequency of 82
-	ldi		freq_lowerbound, 0x5F					; checking for frequncy of 95
+	rcall	indicate_A								; frequency of 82/4 = 21
+	ldi		freq_lowerbound, 0x18					; checking for frequncy of 95/4 = 24
 	ldi		freq_upperbound, 0x00
 	rcall	indicator
 	ret
@@ -52,8 +52,8 @@ note_2:
 	sbrs	r31, 1									; if frequency is changed remap adaptive tuning
 	rcall	flag_clear_2
 
-	rcall	indicate_C								; frequency of 256
-	ldi		freq_lowerbound, 0xF0					; checking for frequncy of 240
+	rcall	indicate_C								; frequency of 256/4 = 64
+	ldi		freq_lowerbound, 0x3C					; checking for frequncy of 240/4 = 60
 	ldi		freq_upperbound, 0x00
 	rcall	indicator
 	ret
