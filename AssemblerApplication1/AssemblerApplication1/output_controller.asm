@@ -10,7 +10,7 @@ indicator:
 
 	brlo	freq_less_than_low						; branch if frequency less than 
 
-	ldi		ctrl, 0x06								; add 24/4 = 6 range
+	ldi		ctrl, 0x19								; add 25 range
 	ldi		r17, 0x00
 
 	add		freq_lowerbound, ctrl

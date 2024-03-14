@@ -1,37 +1,35 @@
-const byte interruptPin = 2;
-volatile byte state = LOW;
-unsigned long start;
+#include <avr/interrupt.h>
 
-int count=0;
+volatile unsigned long int interruptCount = 0; // Variable to count interrupts
+
+unsigned long int start = 0;
+// Define the ISR for INT0
+ISR(INT0_vect) {
+  interruptCount++; // Increment interrupt count
+}
+
 void setup() {
+  // Set INT0 (pin D2 on Arduino Uno) as input
+  DDRD &= ~(1 << PD2);
+
+  // Enable external interrupt INT0
+  EICRA |= (1 << ISC01) | (1 << ISC00); // Rising edge trigger
+  EIMSK |= (1 << INT0); // Enable INT0 interrupt
+
   Serial.begin(9600);
-  pinMode(interruptPin, INPUT_PULLUP);
-  attachInterrupt(digitalPinToInterrupt(interruptPin), blink, CHANGE);
-
-  pinMode(8,OUTPUT);
-  pinMode(9,OUTPUT);
-  pinMode(10,OUTPUT);
-  pinMode(11,OUTPUT);
-
-  start=millis();
+  sei();
+  start = millis();
 }
 
 void loop() {
-  unsigned long current=millis();
-  // if (current-start>1000){
-  //   start=millis();
-  //   Serial.println(count);
-  //   count=0;
-  // }
-  // turnanticlockwise();
-  number();
-
+  unsigned long int current = millis();
+  if(current - start > 500){
+    start = current;
+    Serial.println(interruptCount);
+    interruptCount = 0;
+  }
 }
 
-void blink() {
-  state = !state;
-  count+=1;
-}
 
 void turnclockwise(){
   turnA();

@@ -5,6 +5,10 @@ sleep_mode:
 	out		PORTC, ctrl
 	ldi		ctrl, (1<<PD5)
 	out		PORTD, ctrl
+
+	in		r17, PIND
+	sbrs	r17, 4
+	ret
 	;ldi		ctrl, (1<<0)							; set power saver indicator high
 	;out		PORTC, ctrl
 

@@ -68,7 +68,7 @@ setup:
 	ori		ctrl ,(1<<WDE)|(1<<WDCE)				; enable watchdog interrupts
 	sts		WDTCSR, ctrl
 
-	ldi		ctrl, (1<<WDIE) | (1<<WDP2) | (0<<WDP1)|(0<<WDP0)|(0<<WDP3)	; set watchdog timer for one second
+	ldi		ctrl, (1<<WDIE) | (1<<WDP2) | (1<<WDP0)	; set watchdog timer for one second
 	sts		WDTCSR, ctrl
 
 	ldi		ctrl, (1<<2)|(1<<3)						; interrupt call for a rising edge		
@@ -88,8 +88,8 @@ main_loop:
 
 	andi	onesecpassed, (1<<0)					; put auto/manual state in the register
 
-	in		r17, PINC
-	sbrs	r17, 4									; check for auto/manual conditions
+	in		r17, PIND
+	sbrs	r17, 4								; check for auto/manual conditions
 	rjmp	manual
 	
 	ori		onesecpassed, (1<<1)
@@ -170,7 +170,7 @@ output_handler:
 	lds		ctrl, WDTCSR
 	ori		ctrl ,(1<<WDE)|(1<<WDCE)				; enable watchdog interrupts
 	sts		WDTCSR, ctrl
-	ldi		ctrl, (1<<WDIE) | (1<<WDP2) | (0<<WDP1)|(0<<WDP0)|(0<<WDP3)	; set watchdog timer for one second
+	ldi		ctrl, (1<<WDIE) | (1<<WDP2) | (1<<WDP0)	; set watchdog timer for one second
 	sts		WDTCSR, ctrl
 
 	sei												; enable global interrupts

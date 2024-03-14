@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm Mon Mar 11 12:17:11 2024
+AVRASM ver. 2.2.8  D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm Wed Mar 13 08:21:07 2024
 
 
 EQU  SIGNATURE_000 0000001e
@@ -722,7 +722,7 @@ CSEG tune_down    00000040
 CSEG clockwise    00000046
 CSEG clockwise_loop 00000048
 CSEG anticlockwise_loop 0000004c
-CSEG super_indicator 00000122
+CSEG super_indicator 00000125
 CSEG init         00000065
 CSEG WDT_off      0000007e
 CSEG initializer  00000068
@@ -748,20 +748,20 @@ CSEG P_controller 000000de
 CSEG rotate_once  000000e8
 CSEG done         000000e7
 CSEG sleep_mode   000000ea
-CSEG indicate_F   000000ff
-CSEG display_bcd  00000120
-CSEG indicate_B   00000102
-CSEG indicate_D   00000105
-CSEG indicate_3   00000108
-CSEG indicate_5   0000010b
-CSEG indicate_1   0000010e
-CSEG indicate_E   00000111
-CSEG indicate_C   00000114
-CSEG indicate_6   00000117
-CSEG indicate_2   0000011a
-CSEG indicate_A   0000011d
-CSEG note_3       00000138
-CSEG note_2       00000142
-CSEG flag_clear_1 0000014c
-CSEG flag_clear_3 0000013f
-CSEG flag_clear_2 00000149
+CSEG indicate_F   00000102
+CSEG display_bcd  00000123
+CSEG indicate_B   00000105
+CSEG indicate_D   00000108
+CSEG indicate_3   0000010b
+CSEG indicate_5   0000010e
+CSEG indicate_1   00000111
+CSEG indicate_E   00000114
+CSEG indicate_C   00000117
+CSEG indicate_6   0000011a
+CSEG indicate_2   0000011d
+CSEG indicate_A   00000120
+CSEG note_3       0000013b
+CSEG note_2       00000145
+CSEG flag_clear_1 0000014f
+CSEG flag_clear_3 00000142
+CSEG flag_clear_2 0000014c
