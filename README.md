@@ -1,18 +1,6 @@
 # EE322 - Automatic Tuner WIKI
 Project Automatic Tuner: Implementing an Automatic Tuner for the EE322 mini-project
 
-# In Progress
-| Athulya Ratnayake | Thimira Hirushan | Buddhi Wijenayake |
-|---|---|---|
-|P-Controller | | |
-
-# Planned
-| Tasks | Assignees|
-|---|---|
-| Full proteus set-up | |
-| P controller | Athulya |
-| I2C setup    | |
-
 # DONE
 | Task|
 |---|
@@ -36,4 +24,5 @@ Project Automatic Tuner: Implementing an Automatic Tuner for the EE322 mini-proj
 | Bipolar stepper motor | NEMA 17 |
 | Low Noise Op-Amp | |
 
-# UML Diagram
+# Final Product
+![IMG_1690](https://github.com/Buddhi19/EE322-AutomaticTuner/assets/119914594/ec5b5b0c-19f7-48d1-8aed-3337268eaee5)
