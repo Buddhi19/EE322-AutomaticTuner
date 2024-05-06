@@ -1,26 +1,26 @@
 <ASSEMBLER_INFO>
  <VERSION>2.2.8</VERSION>
  <DEVICE>"ATmega328P"</DEVICE>
- <WORKING_DIR>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\Debug</WORKING_DIR>
+ <WORKING_DIR>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\Debug</WORKING_DIR>
  <INCLUDE_PATH>
   <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc</DIR>
   <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
   <DIR></DIR>
  </INCLUDE_PATH>
- <SOURCE_FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</SOURCE_FILE>
+ <SOURCE_FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm</SOURCE_FILE>
  <INCLUDED_FILES>
   <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc</FILE>
   <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328pdef.inc</FILE>
-  <FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\led_controller.asm</FILE>
-  <FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\delay.asm</FILE>
-  <FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\motor_controller.asm</FILE>
-  <FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\output_controller.asm</FILE>
-  <FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\power_controller.asm</FILE>
-  <FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\display_controller.asm</FILE>
-  <FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\super_controller.asm</FILE>
+  <FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\led_controller.asm</FILE>
+  <FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\delay.asm</FILE>
+  <FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\motor_controller.asm</FILE>
+  <FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\output_controller.asm</FILE>
+  <FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\power_controller.asm</FILE>
+  <FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\display_controller.asm</FILE>
+  <FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\super_controller.asm</FILE>
  </INCLUDED_FILES>
  <OBJECT_FILES>
-  <FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\Debug\AssemblerApplication1.obj</FILE>
+  <FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\Debug\AssemblerApplication1.obj</FILE>
  </OBJECT_FILES>
  <HEX_FILES>
   <FILE>AssemblerApplication1.hex</FILE>
@@ -30,57 +30,57 @@
   <FILE>AssemblerApplication1.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <setup><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>53</LINE></setup>
-  <isr_int1><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>215</LINE></isr_int1>
-  <WDT><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>208</LINE></WDT>
-  <main_loop><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>83</LINE></main_loop>
-  <output_handler><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>153</LINE></output_handler>
-  <manual><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>99</LINE></manual>
-  <auto><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>108</LINE></auto>
-  <step_rotate_clockwise><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\motor_controller.asm</FILE><LINE>23</LINE></step_rotate_clockwise>
-  <step_rotate_anticlockwise><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\motor_controller.asm</FILE><LINE>2</LINE></step_rotate_anticlockwise>
-  <setzero_pos><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\motor_controller.asm</FILE><LINE>43</LINE></setzero_pos>
-  <tune_up><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>120</LINE></tune_up>
-  <tune_down><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>128</LINE></tune_down>
-  <clockwise><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>137</LINE></clockwise>
-  <clockwise_loop><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>141</LINE></clockwise_loop>
-  <anticlockwise_loop><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>147</LINE></anticlockwise_loop>
-  <super_indicator><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\super_controller.asm</FILE><LINE>2</LINE></super_indicator>
-  <init><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>180</LINE></init>
-  <WDT_off><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>226</LINE></WDT_off>
-  <initializer><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>185</LINE></initializer>
-  <store_current><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>201</LINE></store_current>
-  <freq_decreased><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>196</LINE></freq_decreased>
-  <no_overflow><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>223</LINE></no_overflow>
-  <low_led_on><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\led_controller.asm</FILE><LINE>6</LINE></low_led_on>
-  <ok_led_on><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\led_controller.asm</FILE><LINE>13</LINE></ok_led_on>
-  <high_led_on><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\led_controller.asm</FILE><LINE>20</LINE></high_led_on>
-  <pause><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\delay.asm</FILE><LINE>5</LINE></pause>
-  <delay><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\delay.asm</FILE><LINE>19</LINE></delay>
-  <delaylong><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\delay.asm</FILE><LINE>10</LINE></delaylong>
-  <indicator><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\output_controller.asm</FILE><LINE>2</LINE></indicator>
-  <freq_less_than_low><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\output_controller.asm</FILE><LINE>42</LINE></freq_less_than_low>
-  <freq_is_ok><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\output_controller.asm</FILE><LINE>54</LINE></freq_is_ok>
-  <P_controller><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\output_controller.asm</FILE><LINE>60</LINE></P_controller>
-  <rotate_once><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\output_controller.asm</FILE><LINE>77</LINE></rotate_once>
-  <done><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\output_controller.asm</FILE><LINE>74</LINE></done>
-  <sleep_mode><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\power_controller.asm</FILE><LINE>2</LINE></sleep_mode>
-  <indicate_F><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\display_controller.asm</FILE><LINE>2</LINE></indicate_F>
-  <display_bcd><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\display_controller.asm</FILE><LINE>57</LINE></display_bcd>
-  <indicate_B><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\display_controller.asm</FILE><LINE>7</LINE></indicate_B>
-  <indicate_D><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\display_controller.asm</FILE><LINE>12</LINE></indicate_D>
-  <indicate_3><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\display_controller.asm</FILE><LINE>17</LINE></indicate_3>
-  <indicate_5><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\display_controller.asm</FILE><LINE>22</LINE></indicate_5>
-  <indicate_1><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\display_controller.asm</FILE><LINE>27</LINE></indicate_1>
-  <indicate_E><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\display_controller.asm</FILE><LINE>32</LINE></indicate_E>
-  <indicate_C><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\display_controller.asm</FILE><LINE>37</LINE></indicate_C>
-  <indicate_6><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\display_controller.asm</FILE><LINE>42</LINE></indicate_6>
-  <indicate_2><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\display_controller.asm</FILE><LINE>47</LINE></indicate_2>
-  <indicate_A><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\display_controller.asm</FILE><LINE>52</LINE></indicate_A>
-  <note_3><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\super_controller.asm</FILE><LINE>36</LINE></note_3>
-  <note_2><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\super_controller.asm</FILE><LINE>51</LINE></note_2>
-  <flag_clear_1><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\super_controller.asm</FILE><LINE>66</LINE></flag_clear_1>
-  <flag_clear_3><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\super_controller.asm</FILE><LINE>46</LINE></flag_clear_3>
-  <flag_clear_2><FILE>D:\PROJECTS\EE322-AutomaticTuner\src\AssemblerApplication1\AssemblerApplication1\super_controller.asm</FILE><LINE>61</LINE></flag_clear_2>
+  <setup><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>53</LINE></setup>
+  <isr_int1><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>216</LINE></isr_int1>
+  <WDT><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>209</LINE></WDT>
+  <main_loop><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>83</LINE></main_loop>
+  <output_handler><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>154</LINE></output_handler>
+  <manual><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>100</LINE></manual>
+  <auto><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>109</LINE></auto>
+  <step_rotate_clockwise><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\motor_controller.asm</FILE><LINE>23</LINE></step_rotate_clockwise>
+  <step_rotate_anticlockwise><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\motor_controller.asm</FILE><LINE>2</LINE></step_rotate_anticlockwise>
+  <setzero_pos><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\motor_controller.asm</FILE><LINE>43</LINE></setzero_pos>
+  <tune_up><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>121</LINE></tune_up>
+  <tune_down><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>129</LINE></tune_down>
+  <clockwise><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>138</LINE></clockwise>
+  <clockwise_loop><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>142</LINE></clockwise_loop>
+  <anticlockwise_loop><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>148</LINE></anticlockwise_loop>
+  <super_indicator><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\super_controller.asm</FILE><LINE>2</LINE></super_indicator>
+  <init><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>181</LINE></init>
+  <WDT_off><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>227</LINE></WDT_off>
+  <initializer><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>186</LINE></initializer>
+  <store_current><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>202</LINE></store_current>
+  <freq_decreased><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>197</LINE></freq_decreased>
+  <no_overflow><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>224</LINE></no_overflow>
+  <low_led_on><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\led_controller.asm</FILE><LINE>6</LINE></low_led_on>
+  <ok_led_on><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\led_controller.asm</FILE><LINE>13</LINE></ok_led_on>
+  <high_led_on><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\led_controller.asm</FILE><LINE>20</LINE></high_led_on>
+  <pause><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\delay.asm</FILE><LINE>5</LINE></pause>
+  <delay><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\delay.asm</FILE><LINE>19</LINE></delay>
+  <delaylong><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\delay.asm</FILE><LINE>10</LINE></delaylong>
+  <indicator><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\output_controller.asm</FILE><LINE>2</LINE></indicator>
+  <freq_less_than_low><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\output_controller.asm</FILE><LINE>42</LINE></freq_less_than_low>
+  <freq_is_ok><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\output_controller.asm</FILE><LINE>54</LINE></freq_is_ok>
+  <P_controller><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\output_controller.asm</FILE><LINE>60</LINE></P_controller>
+  <rotate_once><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\output_controller.asm</FILE><LINE>77</LINE></rotate_once>
+  <done><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\output_controller.asm</FILE><LINE>74</LINE></done>
+  <sleep_mode><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\power_controller.asm</FILE><LINE>2</LINE></sleep_mode>
+  <indicate_F><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\display_controller.asm</FILE><LINE>2</LINE></indicate_F>
+  <display_bcd><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\display_controller.asm</FILE><LINE>57</LINE></display_bcd>
+  <indicate_B><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\display_controller.asm</FILE><LINE>7</LINE></indicate_B>
+  <indicate_D><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\display_controller.asm</FILE><LINE>12</LINE></indicate_D>
+  <indicate_3><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\display_controller.asm</FILE><LINE>17</LINE></indicate_3>
+  <indicate_5><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\display_controller.asm</FILE><LINE>22</LINE></indicate_5>
+  <indicate_1><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\display_controller.asm</FILE><LINE>27</LINE></indicate_1>
+  <indicate_E><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\display_controller.asm</FILE><LINE>32</LINE></indicate_E>
+  <indicate_C><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\display_controller.asm</FILE><LINE>37</LINE></indicate_C>
+  <indicate_6><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\display_controller.asm</FILE><LINE>42</LINE></indicate_6>
+  <indicate_2><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\display_controller.asm</FILE><LINE>47</LINE></indicate_2>
+  <indicate_A><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\display_controller.asm</FILE><LINE>52</LINE></indicate_A>
+  <note_3><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\super_controller.asm</FILE><LINE>36</LINE></note_3>
+  <note_2><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\super_controller.asm</FILE><LINE>51</LINE></note_2>
+  <flag_clear_1><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\super_controller.asm</FILE><LINE>66</LINE></flag_clear_1>
+  <flag_clear_3><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\super_controller.asm</FILE><LINE>46</LINE></flag_clear_3>
+  <flag_clear_2><FILE>D:\PROJECTS\EE322-AutomaticTuner\AssemblerApplication1\AssemblerApplication1\super_controller.asm</FILE><LINE>61</LINE></flag_clear_2>
  </LABELS>
 </ASSEMBLER_INFO>
